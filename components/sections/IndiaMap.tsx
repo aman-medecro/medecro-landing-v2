@@ -5,26 +5,6 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const pinClusters = [
-  {
-    id: "mumbai",
-    left: "22%",
-    top: "42%",
-    circles: ["bg-purple-400", "bg-blue-400", "bg-green-400"],
-  },
-  {
-    id: "delhi",
-    left: "46%",
-    top: "16%",
-    circles: ["bg-orange-400", "bg-blue-400"],
-  },
-  {
-    id: "hyderabad",
-    left: "54%",
-    top: "52%",
-    circles: ["bg-teal-400", "bg-pink-400"],
-  },
-];
 
 export default function IndiaMap() {
   const ref = useRef(null);

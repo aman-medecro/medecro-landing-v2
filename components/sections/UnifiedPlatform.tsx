@@ -122,7 +122,7 @@ export default function UnifiedPlatform() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-nowrap items-center  mb-8 justify-center"
         >
-          {features.map((f, i) => (
+          {features.map((f) => (
             <div key={f.id} className="flex items-center shrink-0">
               <button
                 onClick={() => setActiveId(f.id)}
