@@ -1,48 +1,41 @@
 "use client";
 
-const logos = [
-  { name: "Apollo Hospitals", initials: "AH" },
-  { name: "Fortis Healthcare", initials: "FH" },
-  { name: "Max Healthcare", initials: "MH" },
-  { name: "AIIMS", initials: "AI" },
-  { name: "Narayana Health", initials: "NH" },
-  { name: "Manipal Hospitals", initials: "MN" },
-  { name: "Columbia Asia", initials: "CA" },
-  { name: "Kokilaben Hospital", initials: "KH" },
-  { name: "Ruby Hall Clinic", initials: "RH" },
-  { name: "Lilavati Hospital", initials: "LH" },
+const items = [
+  { text: "clinics live across India", highlight: "2,000+" },
+  { text: "faster diagnostics", highlight: "AI X-ray: 90%" },
+  { text: "live now · GPIM & Psychiatry coming soon", highlight: "Dental module" },
+  { text: "medicines in Rx intelligence", highlight: "6.5L+" },
+  { text: "Patient adherence up", highlight: "92% on average" },
+  { text: "Complete prescription in", highlight: "under 10 seconds" },
+  { text: "HIPAA-ready · SOC2 compliant", highlight: "" },
 ];
 
-function LogoItem({ name, initials }: { name: string; initials: string }) {
+function TickerItem({ text, highlight }: { text: string; highlight: string }) {
   return (
-    <div className="flex items-center gap-3 mx-8 flex-shrink-0">
-      <div className="w-10 h-10 rounded-xl bg-gray-100 border border-[#E2E8F0] flex items-center justify-center">
-        <span className="text-sm font-bold text-[#64748B]">{initials}</span>
-      </div>
-      <span className="text-sm font-semibold text-[#64748B] whitespace-nowrap">
-        {name}
+    <div className="flex items-center gap-8 flex-shrink-0">
+      <span className="text-sm text-[#374151] whitespace-nowrap">
+        {highlight && (
+          <strong className="font-semibold text-[#0F172A]">{highlight} </strong>
+        )}
+        {text}
       </span>
+      <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] flex-shrink-0" />
     </div>
   );
 }
 
 export default function LogoBar() {
+  const doubled = [...items, ...items];
+
   return (
-    <section className="py-12 bg-white border-y border-[#E2E8F0]">
-      <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
-        <p className="text-sm text-[#64748B] font-medium uppercase tracking-widest">
-          Trusted by leading clinics & hospitals across India
-        </p>
-      </div>
+    <section className="border-y border-[#E2E8F0] bg-white py-3 overflow-hidden">
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
-      <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-        <div className="flex animate-marquee">
-          {[...logos, ...logos].map((logo, i) => (
-            <LogoItem key={`${logo.name}-${i}`} {...logo} />
+        <div className="flex animate-marquee gap-2">
+          {doubled.map((item, i) => (
+            <TickerItem key={i} {...item} />
           ))}
         </div>
       </div>

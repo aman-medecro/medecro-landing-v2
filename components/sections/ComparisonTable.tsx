@@ -2,18 +2,34 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
+import Link from "next/link";
 
 const rows = [
-  { feature: "AI-powered diagnostics", medecro: true, others: false },
-  { feature: "Speciality-native workflows", medecro: true, others: false },
-  { feature: "Real-time lab interpretation", medecro: true, others: false },
-  { feature: "Automated billing & coding", medecro: true, others: false },
-  { feature: "Voice-to-EMR transcription", medecro: true, others: false },
-  { feature: "Built for Indian regulations", medecro: true, others: false },
-  { feature: "Patient engagement app", medecro: true, others: true },
-  { feature: "Appointment scheduling", medecro: true, others: true },
-  { feature: "Basic reporting", medecro: true, others: true },
+  {
+    generic: "Records diagnosis after the fact",
+    medecro: "AI assists diagnosis in real time",
+  },
+  {
+    generic: "Manual appointment reminders",
+    medecro: "Predictive no-show prevention",
+  },
+  {
+    generic: "Static billing module",
+    medecro: "Auto-coded claims with AI audit",
+  },
+  {
+    generic: "One-size-fits-all templates",
+    medecro: "Specialty-native clinical flows",
+  },
+  {
+    generic: "AI bolted on top",
+    medecro: "AI-native from the ground up",
+  },
+  {
+    generic: "Doctors adapt to software",
+    medecro: "Software adapts to how doctors think",
+  },
 ];
 
 export default function ComparisonTable() {
@@ -22,100 +38,101 @@ export default function ComparisonTable() {
 
   return (
     <section ref={ref} className="py-20 lg:py-28 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-[#2563EB] uppercase tracking-wide mb-4">
-            Why Medecro
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
-            Most software manages your clinic.{" "}
-            <span className="text-[#2563EB]">Medecro thinks with it.</span>
-          </h2>
-          <p className="text-[#64748B] text-lg">
-            See how Medecro stacks up against traditional clinic management
-            software.
-          </p>
-        </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        {/* Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="rounded-2xl border border-[#E2E8F0] overflow-hidden shadow-sm"
-        >
-          {/* Table header */}
-          <div className="grid grid-cols-3 bg-[#F8FAFC] border-b border-[#E2E8F0]">
-            <div className="px-6 py-4 text-sm font-semibold text-[#64748B]">
-              Feature
-            </div>
-            <div className="px-6 py-4 text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB] text-white text-sm font-bold">
-                <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center">
-                  <span className="text-[10px] font-bold">M</span>
-                </div>
-                Medecro
-              </div>
-            </div>
-            <div className="px-6 py-4 text-center text-sm font-semibold text-[#64748B]">
-              Others
-            </div>
-          </div>
-
-          {/* Rows */}
-          {rows.map((row, i) => (
-            <motion.div
-              key={row.feature}
-              initial={{ opacity: 0, x: -10 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.2 + i * 0.06 }}
-              className={`grid grid-cols-3 border-b last:border-b-0 border-[#E2E8F0] ${
-                i % 2 === 0 ? "bg-white" : "bg-[#F8FAFC]/50"
-              }`}
-            >
-              <div className="px-6 py-4 text-sm text-[#0F172A] flex items-center">
-                {row.feature}
-              </div>
-              <div className="px-6 py-4 flex items-center justify-center">
-                <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-                  <Check size={14} className="text-[#16A34A] font-bold" strokeWidth={3} />
-                </div>
-              </div>
-              <div className="px-6 py-4 flex items-center justify-center">
-                {row.others ? (
-                  <div className="w-7 h-7 rounded-full bg-green-100 flex items-center justify-center">
-                    <Check size={14} className="text-[#16A34A]" strokeWidth={3} />
-                  </div>
-                ) : (
-                  <div className="w-7 h-7 rounded-full bg-red-100 flex items-center justify-center">
-                    <X size={14} className="text-red-500" strokeWidth={3} />
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.9 }}
-          className="text-center mt-8"
-        >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#2563EB] text-white font-semibold hover:bg-blue-700 transition-colors text-sm shadow-lg shadow-blue-500/20"
+          {/* Left */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
           >
-            Switch to Medecro today →
-          </a>
-        </motion.div>
+            <span
+              className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block"
+              style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
+            >
+              The Difference
+            </span>
+            <h2
+              className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-5"
+              style={{ fontSize: "56px", lineHeight: "64px", letterSpacing: "-1px" }}
+            >
+              Most software manages your clinic. Medecro{" "}
+              <em
+                className="not-italic italic"
+                style={{ fontWeight: 400, color: "#2563EB" }}
+              >
+                thinks
+              </em>{" "}
+              with it.
+            </h2>
+            <p
+              className="font-[family-name:var(--font-outfit)] mb-8 max-w-sm"
+              style={{ fontWeight: 400, fontSize: "18px", lineHeight: "27.2px", color: "#6C6C6C" }}
+            >
+              Generic EMRs record what happened. Medecro&apos;s Intelligence OS
+              processes clinical signals, surfaces insights, and automates the
+              decisions that currently live inside your head — so you focus
+              entirely on the patient in front of you.
+            </p>
+            <Link
+              href="/platform"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0316FF] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              See the Intelligence Layer →
+            </Link>
+          </motion.div>
+
+          {/* Right — comparison table */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="rounded-2xl border border-[#E2E8F0] overflow-hidden"
+          >
+            {/* Header row */}
+            <div className="grid grid-cols-2">
+              <div className="px-5 py-3 border-b border-[#E2E8F0] bg-[#FF503C1A]">
+                <span
+                  className="font-[family-name:var(--font-dm-sans)] font-bold text-[#FF6050] uppercase"
+                  style={{ fontSize: "10px", letterSpacing: "1.2px" }}
+                >
+                  Generic EMR
+                </span>
+              </div>
+              <div className="px-5 py-3 border-b border-[#E2E8F0] bg-[#0316FF26]">
+                <span
+                  className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase"
+                  style={{ fontSize: "10px", letterSpacing: "1.2px" }}
+                >
+                  Medecro AI
+                </span>
+              </div>
+            </div>
+
+            {/* Rows */}
+            {rows.map((row, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ duration: 0.35, delay: 0.2 + i * 0.06 }}
+                className="grid grid-cols-2 border-b last:border-b-0 border-[#E2E8F0]"
+              >
+                <div className="px-5 py-3.5 text-sm text-[#64748B] bg-[#FF503C08]">
+                  {row.generic}
+                </div>
+                <div className="px-5 py-3.5 bg-[#EEF2FF] flex items-center gap-2">
+                  <Check size={13} className="text-[#16A34A] flex-shrink-0" strokeWidth={3} />
+                  <span className="text-sm font-semibold text-[#0F172A]">
+                    {row.medecro}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

@@ -1,107 +1,159 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import {
-  Calendar,
+  CalendarDays,
   CreditCard,
   FileText,
-  BarChart3,
   Pill,
   FlaskConical,
   Users,
-  Bell,
-  Smartphone,
-  Shield,
   Video,
-  MessageSquare,
+  ScanLine,
 } from "lucide-react";
 
-const platformFeatures = [
-  { icon: Calendar, label: "Appointments", color: "bg-blue-50 text-blue-600" },
-  { icon: CreditCard, label: "Billing", color: "bg-green-50 text-green-600" },
-  { icon: FileText, label: "EMR", color: "bg-purple-50 text-purple-600" },
-  { icon: BarChart3, label: "Reports", color: "bg-amber-50 text-amber-600" },
-  { icon: Pill, label: "Pharmacy", color: "bg-red-50 text-red-600" },
-  { icon: FlaskConical, label: "Lab", color: "bg-cyan-50 text-cyan-600" },
-  { icon: Users, label: "Staff Mgmt", color: "bg-indigo-50 text-indigo-600" },
-  { icon: Bell, label: "Reminders", color: "bg-pink-50 text-pink-600" },
-  { icon: Smartphone, label: "Mobile App", color: "bg-teal-50 text-teal-600" },
-  { icon: Shield, label: "Compliance", color: "bg-emerald-50 text-emerald-600" },
-  { icon: Video, label: "Teleconsult", color: "bg-violet-50 text-violet-600" },
-  { icon: MessageSquare, label: "Patient Chat", color: "bg-orange-50 text-orange-600" },
+const features = [
+  {
+    id: "clinical-records",
+    tab: "Smart Clinical Records",
+    icon: FileText,
+    title: "Smart Clinical Records",
+    description:
+      "AI-assisted EMR that auto-fills from voice, suggests diagnoses, and keeps patient history organised for every visit.",
+  },
+  {
+    id: "opd-management",
+    tab: "OPD Management",
+    icon: CalendarDays,
+    title: "OPD Management",
+    description:
+      "Real-time OPD scheduling with procedure-based slot durations, multi-chair views, and predictive no-show alerts.",
+  },
+  {
+    id: "ai-prescriptions",
+    tab: "AI Prescriptions",
+    icon: Pill,
+    title: "AI Prescriptions",
+    description:
+      "Generate complete prescriptions in under 10 seconds with SNOMED-mapped medicines and speciality-specific templates.",
+  },
+  {
+    id: "automated-billing",
+    tab: "Automated Billing",
+    icon: CreditCard,
+    title: "Automated Billing",
+    description:
+      "One-click billing with GST compliance, insurance claim automation, and real-time revenue dashboards.",
+  },
+  {
+    id: "pacs-integration",
+    tab: "PACS Integration",
+    icon: ScanLine,
+    title: "PACS Integration",
+    description:
+      "Connect your radiology workflow with AI-powered X-ray analysis, DICOM support, and instant report sharing.",
+  },
+  {
+    id: "lab-connect",
+    tab: "Lab Connect",
+    icon: FlaskConical,
+    title: "Lab Connect",
+    description:
+      "Order lab tests, receive digital reports, and get AI-interpreted results directly inside the patient record.",
+  },
+  {
+    id: "patient-portal",
+    tab: "Patient Portal",
+    icon: Users,
+    title: "Patient Portal",
+    description:
+      "Give patients a digital touchpoint — appointments, reports, prescriptions, and follow-ups in one app.",
+  },
+  {
+    id: "tele-consultations",
+    tab: "Tele-Consultations",
+    icon: Video,
+    title: "Tele-Consultations",
+    description:
+      "HD video consultations with in-call prescriptions, vitals capture, and automatic session documentation.",
+  },
 ];
 
 export default function UnifiedPlatform() {
+  const [activeId, setActiveId] = useState("opd-management");
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  const active = features.find((f) => f.id === activeId)!;
+  const Icon = active.icon;
+
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-[#F8FAFC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} className="py-20 lg:py-28 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
         >
-          <span className="inline-block px-3 py-1 rounded-full bg-green-50 border border-green-100 text-xs font-semibold text-[#16A34A] uppercase tracking-wide mb-4">
-            All-in-one platform
+          <span
+            className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block"
+            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
+          >
+            Full Platform
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
+          <h2
+            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4"
+            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px" }}
+          >
             Everything under one roof.
           </h2>
-          <p className="text-[#64748B] text-lg max-w-2xl mx-auto">
-            From the moment a patient calls to the moment they walk out, every
-            touchpoint is managed inside Medecro. No integrations required.
+          <p className="text-[#64748B] text-base max-w-md mx-auto">
+            Eight powerful features that cover every operational need of your clinic.
           </p>
         </motion.div>
 
-        {/* Feature grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          {platformFeatures.map((feat, i) => {
-            const Icon = feat.icon;
-            return (
-              <motion.div
-                key={feat.label}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
-                animate={
-                  inView ? { opacity: 1, y: 0, scale: 1 } : {}
-                }
-                transition={{
-                  duration: 0.45,
-                  delay: i * 0.05,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-white border border-[#E2E8F0] hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-default group"
-              >
-                <div
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center ${feat.color} group-hover:scale-110 transition-transform duration-200`}
-                >
-                  <Icon size={22} />
-                </div>
-                <span className="text-xs font-semibold text-[#0F172A] text-center leading-snug">
-                  {feat.label}
-                </span>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Bottom CTA */}
+        {/* Tab list */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.7 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex flex-nowrap items-center  mb-8 justify-center"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#0F172A] text-white font-semibold hover:bg-gray-800 transition-colors text-sm"
-          >
-            Explore all modules →
-          </a>
+          {features.map((f, i) => (
+            <div key={f.id} className="flex items-center shrink-0">
+              <button
+                onClick={() => setActiveId(f.id)}
+                className={`px-3 py-1 rounded-full text-sm transition-all font-medium whitespace-nowrap ${
+                  activeId === f.id
+                    ? "border border-[#2563EB] text-[#2563EB]"
+                    : "text-[#64748B] hover:text-[#0F172A]"
+                }`}
+              >
+                {f.tab}
+              </button>
+      
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Content card */}
+        <motion.div
+          key={activeId}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-[#F5F7FA] rounded-2xl px-8 py-16 flex flex-col items-center text-center"
+        >
+          <div className="w-14 h-14 rounded-2xl border-2 border-[#2563EB] flex items-center justify-center mb-6">
+            <Icon size={26} className="text-[#2563EB]" strokeWidth={1.5} />
+          </div>
+          <h3 className="text-xl font-bold text-[#0F172A] mb-3">{active.title}</h3>
+          <p className="text-[#64748B] text-sm leading-relaxed max-w-sm">
+            {active.description}
+          </p>
         </motion.div>
       </div>
     </section>

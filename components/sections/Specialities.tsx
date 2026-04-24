@@ -3,19 +3,27 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const specialities = [
-  { name: "Dental", emoji: "🦷", desc: "Charting, OPG, treatment plans" },
-  { name: "Dermatology", emoji: "✨", desc: "Skin conditions, photo tracking" },
-  { name: "Orthopaedics", emoji: "🦴", desc: "Fracture mgmt, physio referrals" },
-  { name: "Gynaecology", emoji: "🩺", desc: "OB/GYN cycles, ultrasound logs" },
-  { name: "General Practice", emoji: "🏥", desc: "All-purpose clinical workflows" },
-  { name: "Ophthalmology", emoji: "👁️", desc: "Vision charts, IOL planning" },
-  { name: "Cardiology", emoji: "❤️", desc: "ECG interpretation, risk scoring" },
-  { name: "Paediatrics", emoji: "👶", desc: "Growth charts, vaccination" },
-  { name: "ENT", emoji: "👂", desc: "Audiometry, scope findings" },
-  { name: "Neurology", emoji: "🧠", desc: "Seizure tracking, MMSE" },
-  { name: "Psychiatry", emoji: "💬", desc: "PHQ-9, mood journaling, notes" },
-  { name: "Urology", emoji: "🔬", desc: "PSA, urodynamics, surgical prep" },
+const items = [
+  {
+    num: "01",
+    title: "Specialty-native flows, built with clinicians",
+    desc: "Every screen, every field, every interaction — designed with dentists for dentists, psychiatrists for psychiatrists. No compromises, no one-size fits all.",
+  },
+  {
+    num: "02",
+    title: "Only what that speciality actually needs",
+    desc: "No irrelevant fields. No generic dropdowns. Only the clinical logic that matters for each doctor type — keeping consultations fast and accurate.",
+  },
+  {
+    num: "03",
+    title: "Software adapts to how doctors think",
+    desc: "Rx pads are configurable per doctor. Clinical flows mirror real-world consultation patterns. The software learns your style, not the other way around.",
+  },
+  {
+    num: "04",
+    title: "AI-native from the ground up",
+    desc: "Not AI added on top. AI woven into every clinical decision point — from X-ray to prescription to follow-up. Intelligence built in, not bolted on.",
+  },
 ];
 
 export default function Specialities() {
@@ -23,65 +31,76 @@ export default function Specialities() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-[#F8FAFC]">
+    <section ref={ref} className="py-20 lg:py-28 bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
-          className="text-center mb-14"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
         >
-          <span className="inline-block px-3 py-1 rounded-full bg-purple-50 border border-purple-100 text-xs font-semibold text-purple-600 uppercase tracking-wide mb-4">
-            Specialities
+          <span
+            className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block"
+            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
+          >
+            Our Moat
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] mb-4">
-            Every speciality is different.{" "}
-            <span className="text-[#2563EB]">We built for that.</span>
+          <h2
+            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A]"
+            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px" }}
+          >
+            Every speciality is different.
           </h2>
-          <p className="text-[#64748B] text-lg max-w-2xl mx-auto">
-            Medecro ships with native workflows for 12+ specialities. No
-            customisation needed — just select yours and go.
+          <h2
+            className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5"
+            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px", color: "#2563EB" }}
+          >
+            We built for that.
+          </h2>
+          <p className="text-[#64748B] text-sm leading-relaxed max-w-sm mx-auto">
+            Most clinical platforms force every doctor through the same generic
+            interface. We took a different path — built from the ground up with
+            clinicians.
           </p>
         </motion.div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {specialities.map((spec, i) => (
-            <motion.div
-              key={spec.name}
-              initial={{ opacity: 0, y: 20, scale: 0.97 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{
-                duration: 0.45,
-                delay: i * 0.05,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="group p-5 rounded-2xl bg-white border border-[#E2E8F0] hover:border-[#2563EB]/30 hover:shadow-md transition-all duration-200 cursor-default"
-            >
-              <div className="text-3xl mb-3">{spec.emoji}</div>
-              <h3 className="font-bold text-[#0F172A] text-sm mb-1">
-                {spec.name}
-              </h3>
-              <p className="text-[11px] text-[#64748B] leading-relaxed">
-                {spec.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Footer note */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8 }}
-          className="text-center mt-8 text-sm text-[#64748B]"
+        {/* Single card with 2×2 grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, delay: 0.15 }}
+          className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden"
         >
-          Don&apos;t see yours?{" "}
-          <a href="#contact" className="text-[#2563EB] font-semibold hover:underline">
-            Request your speciality →
-          </a>
-        </motion.p>
+          <div className="grid sm:grid-cols-2">
+            {items.map((item, i) => (
+              <motion.div
+                key={item.num}
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.45, delay: 0.2 + i * 0.08 }}
+                className={`p-8 ${
+                  i % 2 === 0 ? "sm:border-r" : ""
+                } ${
+                  i < 2 ? "border-b" : ""
+                } border-[#E2E8F0]`}
+              >
+                <span
+                  className="font-[family-name:var(--font-fraunces)] font-bold text-[#E2E8F0] block mb-4 select-none"
+                  style={{ fontSize: "56px", lineHeight: 1 }}
+                >
+                  {item.num}
+                </span>
+                <h3 className="font-bold text-[#0F172A] text-base mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[#64748B] leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
