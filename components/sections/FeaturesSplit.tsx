@@ -1,160 +1,204 @@
 "use client";
 
+import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
-const features = [
-  "AI-powered appointment scheduling with zero conflicts",
-  "Smart EMR that auto-fills from voice and past records",
-  "One-click billing with insurance claim automation",
-  "Lab results interpreted by AI in real time",
-  "Speciality-specific templates out of the box",
-  "Multi-clinic management from a single dashboard",
+const modules = [
+  {
+    id: "ai-xray",
+    tab: "AI X-ray Analyser",
+    label: "AI X-RAY ANALYSER",
+    status: "BETA",
+    statusColor: "bg-orange-100 text-orange-600",
+    titleBold: "Smart",
+    titleBlue: "AI X-ray Analyser",
+    description:
+      "AI-powered radiology assistant that analyses X-rays instantly, highlights anomalies, and generates structured reports — built for Indian clinics.",
+    features: [
+      "Detects fractures, lesions & anomalies",
+      "Generates structured radiology reports",
+      "90% faster than manual analysis",
+      "Integrated with patient records",
+    ],
+    link: "Explore AI X-ray Analyser",
+    href: "/platform/ai-xray",
+  },
+  {
+    id: "clinic-os",
+    tab: "Intelligent Clinic OS",
+    label: "INTELLIGENT CLINIC OS",
+    status: "LIVE",
+    statusColor: "bg-green-100 text-green-600",
+    titleBold: "Smart",
+    titleBlue: "Intelligent Clinic OS",
+    description:
+      "Complete clinic management OS — appointments, billing, EMR, and workflows unified under one intelligent platform.",
+    features: [
+      "Smart appointment scheduling",
+      "Auto-generated billing & invoices",
+      "Multi-speciality EMR built-in",
+      "Real-time analytics dashboard",
+    ],
+    link: "Explore Clinic OS",
+    href: "/platform/clinic-os",
+  },
+  {
+    id: "rx-intelligence",
+    tab: "Rx Intelligence",
+    label: "RX INTELLIGENCE",
+    status: "LIVE",
+    statusColor: "bg-green-100 text-green-600",
+    titleBold: "Smart",
+    titleBlue: "Rx Intelligence",
+    description:
+      "The first AI-native prescription platform built specifically for Dental, Psychiatry, GPIM with built-in custom forms. Not adapted — built from scratch with clinicians.",
+    features: [
+      "SNOMED data mapping built-in",
+      "6 lakhs+ medicines in database",
+      "Complete prescription within 10 seconds",
+      "Customisable Rx for each speciality",
+    ],
+    link: "Explore Rx Intelligence",
+    href: "/platform/rx-intelligence",
+  },
+  {
+    id: "ai-communication",
+    tab: "AI Communication",
+    label: "AI COMMUNICATION",
+    status: "COMING SOON",
+    statusColor: "bg-blue-100 text-blue-600",
+    titleBold: "Smart",
+    titleBlue: "AI Communication",
+    description:
+      "Automated patient communication layer — follow-ups, reminders, and care messages sent at the right time through the right channel.",
+    features: [
+      "Automated follow-up reminders",
+      "WhatsApp & SMS integration",
+      "Patient engagement analytics",
+      "Customisable communication flows",
+    ],
+    link: "Explore AI Communication",
+    href: "/platform/ai-communication",
+  },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.55,
-      delay: i * 0.08,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
-
 export default function FeaturesSplit() {
+  const [activeId, setActiveId] = useState("rx-intelligence");
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-  return (
-    <section ref={ref} className="py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left: text */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="inline-block px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-[#2563EB] uppercase tracking-wide mb-4">
-                Features
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] leading-tight mb-4">
-                Everything your clinic needs.{" "}
-                <span className="text-[#64748B]">Nothing it doesn&apos;t.</span>
-              </h2>
-              <p className="text-[#64748B] text-lg mb-8">
-                Built from the ground up for Indian clinical workflows. No bloat,
-                no unnecessary complexity — just the tools that make your
-                practice run smoothly.
-              </p>
-            </motion.div>
+  const active = modules.find((m) => m.id === activeId)!;
 
-            <ul className="space-y-3">
-              {features.map((feat, i) => (
-                <motion.li
-                  key={feat}
-                  custom={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  className="flex items-start gap-3"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-[#16A34A] flex-shrink-0 mt-0.5" />
-                  <span className="text-[#0F172A] text-sm leading-relaxed">
-                    {feat}
-                  </span>
-                </motion.li>
+  return (
+    <section ref={ref} className="py-20 lg:py-28 bg-[#F5F7FA]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
+          <span
+            className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block"
+            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
+          >
+            Platform Modules
+          </span>
+          <h2
+            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4"
+            style={{ fontSize: "56px", lineHeight: "86px", letterSpacing: "-1.62px" }}
+          >
+            Everything your clinic needs.
+            <br />
+            Nothing it doesn&apos;t.
+          </h2>
+          <p className="text-[#64748B] text-base max-w-lg mx-auto">
+            Four AI-native modules that run every clinical touchpoint from first
+            contact to last follow-up.
+          </p>
+        </motion.div>
+
+        {/* Tab switcher */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex justify-center mb-10"
+        >
+          <div className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] rounded-full px-2 py-2 shadow-sm">
+            {modules.map((m) => (
+              <button
+                key={m.id}
+                onClick={() => setActiveId(m.id)}
+                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                  activeId === m.id
+                    ? "bg-[#2563EB] text-white shadow-sm"
+                    : "text-[#374151] hover:text-[#0F172A]"
+                }`}
+              >
+                {activeId !== m.id && (
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
+                )}
+                {m.tab}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Content */}
+        <motion.div
+          key={activeId}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="grid lg:grid-cols-2 gap-10 items-center"
+        >
+          {/* Left */}
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-xs font-semibold text-[#2563EB] uppercase tracking-widest">
+                {active.label}
+              </span>
+              <span
+                className={`text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase tracking-wide ${active.statusColor}`}
+              >
+                {active.status}
+              </span>
+            </div>
+
+            <h3 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-4xl font-bold leading-tight mb-3">
+              {active.titleBold}
+              <br />
+              <span style={{ color: "#2563EB" }}>{active.titleBlue}</span>
+            </h3>
+
+            <p className="text-[#64748B] text-sm leading-relaxed mb-6 max-w-sm">
+              {active.description}
+            </p>
+
+            <ul className="space-y-3 mb-6">
+              {active.features.map((feat) => (
+                <li key={feat} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#16A34A] flex-shrink-0" />
+                  <span className="text-sm text-[#374151]">{feat}</span>
+                </li>
               ))}
             </ul>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 0.7 }}
-              className="mt-8"
+            <Link
+              href={active.href}
+              className="text-sm font-semibold text-[#2563EB] hover:underline"
             >
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#2563EB] text-white font-semibold hover:bg-blue-700 transition-colors text-sm"
-              >
-                See all features →
-              </a>
-            </motion.div>
+              {active.link} →
+            </Link>
           </div>
 
-          {/* Right: product screenshot placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-indigo-50 border border-[#E2E8F0] p-6 shadow-xl shadow-blue-500/5">
-              {/* EMR mockup */}
-              <div className="bg-white rounded-xl shadow-sm border border-[#E2E8F0] p-5">
-                <div className="flex items-center justify-between mb-4">
-                  <div>
-                    <div className="text-xs font-semibold text-[#64748B] mb-1">
-                      Patient Record
-                    </div>
-                    <div className="text-base font-bold text-[#0F172A]">
-                      Sunita Rao, 45F
-                    </div>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold">
-                    Active
-                  </span>
-                </div>
-
-                <div className="space-y-3">
-                  {[
-                    { label: "Chief Complaint", value: "Knee pain for 3 months" },
-                    { label: "Vitals", value: "BP: 120/80 | HR: 72 | SpO2: 98%" },
-                    { label: "AI Diagnosis", value: "Osteoarthritis (Grade II) — high confidence" },
-                  ].map((item) => (
-                    <div
-                      key={item.label}
-                      className="flex flex-col gap-0.5 px-3 py-2.5 rounded-lg bg-gray-50 border border-[#E2E8F0]"
-                    >
-                      <span className="text-[10px] uppercase tracking-wider text-[#64748B] font-medium">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-[#0F172A] font-medium">
-                        {item.value}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 flex gap-2">
-                  <button className="flex-1 px-3 py-2 rounded-lg bg-[#2563EB] text-white text-xs font-semibold">
-                    Add Prescription
-                  </button>
-                  <button className="flex-1 px-3 py-2 rounded-lg border border-[#E2E8F0] text-xs font-semibold text-[#64748B]">
-                    Order Lab Test
-                  </button>
-                </div>
-              </div>
-
-              {/* AI suggestion card */}
-              <div className="mt-3 p-3 rounded-xl bg-blue-600 text-white flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[10px] font-bold">AI</span>
-                </div>
-                <div className="text-xs">
-                  <strong>Suggested:</strong> X-ray knee bilateral + physiotherapy
-                  referral based on symptom pattern.
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+          {/* Right: placeholder */}
+          <div className="w-full aspect-[4/3] rounded-2xl bg-[#D1D5DB] shadow-lg" />
+        </motion.div>
       </div>
     </section>
   );

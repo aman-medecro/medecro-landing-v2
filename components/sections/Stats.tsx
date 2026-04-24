@@ -1,103 +1,103 @@
 "use client";
 
-import { motion, useInView, animate } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: 90, suffix: "%", label: "Time Saved", sublabel: "on administrative tasks" },
-  { value: 2000, suffix: "+", label: "Clinics", sublabel: "across India" },
-  { value: 92, suffix: "%", label: "Satisfaction", sublabel: "from active users" },
-  { value: 12, suffix: "+", label: "Specialities", sublabel: "natively supported" },
+  {
+    value: "90%",
+    color: "#2563EB",
+    label: "Faster AI Diagnostics",
+    sublabel: "Average speed improvement in AI-assisted diagnosis",
+  },
+  {
+    value: "2K+",
+    color: "#16A34A",
+    label: "Clinics Live",
+    sublabel: "Active clinics across 9 major cities in India",
+  },
+  {
+    value: "92%",
+    color: "#2563EB",
+    label: "Adherence Improvement",
+    sublabel: "Improvement in patient appointment adherence rate",
+  },
+  {
+    value: "12+",
+    color: "#16A34A",
+    label: "Specialities",
+    sublabel: "Medical specialities being built natively on the platform",
+  },
 ];
-
-function CountUp({
-  target,
-  suffix,
-  inView,
-}: {
-  target: number;
-  suffix: string;
-  inView: boolean;
-}) {
-  const [count, setCount] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!inView || started.current) return;
-    started.current = true;
-
-    const controls = animate(0, target, {
-      duration: 2,
-      ease: "easeOut",
-      onUpdate(value) {
-        setCount(Math.floor(value));
-      },
-    });
-
-    return () => controls.stop();
-  }, [inView, target]);
-
-  return (
-    <span>
-      {count.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
 
 export default function Stats() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section
-      ref={ref}
-      className="py-20 lg:py-24 bg-gradient-to-br from-[#2563EB] to-blue-700 relative overflow-hidden"
-    >
-      {/* Decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-      </div>
+    <section className="w-full bg-white py-20 px-6">
+      <div className="max-w-7xl mx-auto" ref={ref}>
+        {/* Label */}
+        <p className="font-[family-name:var(--font-outfit)] font-bold text-[11px] leading-[17.6px] tracking-[1.65px] uppercase text-[#2563EB] mb-4 text-center">
+          Platform Impact
+        </p>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        {/* Heading */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
+          style={{
+            fontFamily: "var(--font-fraunces)",
+            fontWeight: 700,
+            fontSize: 48,
+            letterSpacing: "-1px",
+            color: "#0F172A",
+            lineHeight: 1.15,
+          }}
+          className="mb-10"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Numbers that speak for themselves
-          </h2>
-          <p className="text-blue-200 text-lg">
-            Real results from real doctors using Medecro every day.
-          </p>
-        </motion.div>
+          Numbers that speak for themselves.
+        </motion.h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Stats card */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.18 }}
+          className="bg-[#F5F7FA] rounded-2xl border border-[#E2E8F0] grid grid-cols-4 divide-x divide-[#E2E8F0]"
+        >
           {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
-              transition={{
-                duration: 0.55,
-                delay: i * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative text-center p-8 rounded-2xl bg-white/10 border border-white/10 backdrop-blur"
+            <div
+              key={i}
+              className="flex flex-col items-center text-center px-8 py-10"
             >
-              <div className="text-5xl font-bold text-white mb-2 tabular-nums">
-                <CountUp target={stat.value} suffix={stat.suffix} inView={inView} />
-              </div>
-              <div className="text-lg font-semibold text-white mb-1">
+              <span
+                style={{
+                  fontFamily: "var(--font-fraunces)",
+                  fontWeight: 700,
+                  fontSize: 48,
+                  color: stat.color,
+                  lineHeight: 1,
+                }}
+              >
+                {stat.value}
+              </span>
+              <span
+                className="font-bold text-sm mt-1"
+                style={{ color: "#0F172A" }}
+              >
                 {stat.label}
-              </div>
-              <div className="text-sm text-blue-200">{stat.sublabel}</div>
-            </motion.div>
+              </span>
+              <span
+                className="text-xs mt-1 max-w-[140px]"
+                style={{ color: "#64748B" }}
+              >
+                {stat.sublabel}
+              </span>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
