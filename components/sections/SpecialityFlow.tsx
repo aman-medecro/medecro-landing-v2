@@ -48,36 +48,36 @@ export default function SpecialityFlow() {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-[#FFFFFF]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[#FFFFFF]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
 
           {/* Left */}
-          <div>
+          <div className="text-center lg:text-left">
             <span className="block font-bold uppercase text-[#2563EB] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
               Early Access
             </span>
-            <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[42px] leading-[1.15] tracking-[-1px] mb-5">
+            <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[30px] sm:text-[36px] lg:text-[42px] leading-tight tracking-[-1px] mb-5">
               Get your speciality&apos;s
               <br />
               native flow{" "}
               <span className="text-[#2563EB] italic">first.</span>
             </h2>
-            <p className="text-[#64748B] text-[15px] leading-[1.7] mb-8 max-w-sm">
+            <p className="text-[#64748B] text-sm sm:text-[15px] leading-[1.7] mb-8 max-w-sm mx-auto lg:mx-0">
               Founding Partners shape the product. Tell us your speciality and we&apos;ll build
               your flow with you — before anyone else gets access.
             </p>
 
-            <ul className="space-y-3 mb-10">
+            <ul className="space-y-3 mb-8 sm:mb-10">
               {bullets.map((item) => (
-                <li key={item} className="flex items-center gap-2.5 text-sm font-medium text-[#0F172A]">
-                  <span className="text-[#2563EB] font-bold text-base leading-none">✓</span>
+                <li key={item} className="flex items-center justify-center lg:justify-start gap-2.5 text-sm font-medium text-[#1E1E1E]">
+                  {/* <span className="text-[#2563EB] font-bold text-base leading-none">✓</span> */}
                   {item}
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-wrap gap-x-5 gap-y-1">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-1">
               {trust.map((t) => (
                 <span key={t} className="flex items-center gap-1.5 text-[#64748B] text-xs">
                   <span className="text-[#16A34A] font-bold">✓</span>

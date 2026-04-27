@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
@@ -12,10 +12,10 @@ const navLinks = [
   { href: "/company", label: "Company", hasDropdown: true },
 ];
 
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Platform");
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -23,106 +23,177 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white backdrop-blur-md shadow-sm border-b border-[#E2E8F0]"
-          : "bg-transparent"
-      }`}
+  useEffect(() => {
+    document.body.style.overflow = drawerOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [drawerOpen]);
+
+  const HamburgerIcon = () => (
+    <button
+      onClick={() => setDrawerOpen(true)}
+      aria-label="Open menu"
+      className="w-9 h-9 rounded-full border border-[#E2E8F0] bg-white flex items-center justify-center text-[#0F172A] hover:border-[#94A3B8] transition-colors"
     >
-      <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-4">
-          <div className="w-8 h-8 flex items-center justify-center">
-            <Image
-              src={"/medecro-logo.svg"}
-              alt="Medecro logo"
-              width={20}
-              height={20}
-              className="w-12 h-12"
-            
-            />
+      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+        <rect width="16" height="1.5" rx="0.75" fill="currentColor" />
+        <rect y="5.25" width="16" height="1.5" rx="0.75" fill="currentColor" />
+        <rect y="10.5" width="16" height="1.5" rx="0.75" fill="currentColor" />
+      </svg>
+    </button>
+  );
+
+  return (
+    <>
+      {/* ── Navbar ── */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-[#E2E8F0]" : "bg-transparent"
+        }`}
+      >
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image src="/medecro-logo.svg" alt="Medecro" width={32} height={32} className="w-8 h-8" />
+            <span className="font-semibold text-[17px] text-[#0F172A]">medecro.ai</span>
+          </Link>
+
+          {/* Desktop (lg+): nav links */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
+                >
+                  {link.label}
+                  {link.hasDropdown && <ChevronDown size={14} className="text-[#94A3B8]" />}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Desktop (lg+): CTAs only */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Link
+              href="/login"
+              className="text-sm font-medium text-[#10B981] border border-[#10B981] rounded-full px-5 py-2 hover:bg-[#10B981]/10 transition-colors"
+            >
+              Login
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#10B981] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Book Demo
+              <Image src="/demo-arrow.svg" alt="" width={14} height={14} />
+            </Link>
           </div>
-          <span className="font-semibold text-xl text-[#0F172A]">medecro.ai</span>
-        </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden md:flex items-center gap-12">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="inline-flex items-center gap-1 text-sm text-[#000000] hover:text-[#000000] transition-colors font-medium"
-              >
-                {link.label}
-                {link.hasDropdown && <ChevronDown size={14} className="text-[#64748B]" />}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          {/* Tablet (md to lg): Login + Book Demo + hamburger */}
+          <div className="hidden md:flex lg:hidden items-center gap-3">
+            <Link
+              href="/login"
+              className="text-sm font-medium text-[#10B981] border border-[#10B981] rounded-full px-4 py-1.5 hover:bg-[#10B981]/10 transition-colors"
+            >
+              Login
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#10B981] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+            >
+              Book Demo
+              <Image src="/demo-arrow.svg" alt="" width={12} height={12} />
+            </Link>
+            <HamburgerIcon />
+          </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
+          {/* Mobile (< md): hamburger only */}
+          <div className="flex md:hidden">
+            <HamburgerIcon />
+          </div>
+        </nav>
+      </header>
+
+      {/* ── Drawer backdrop ── */}
+      <div
+        className={`fixed inset-0 z-50 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+          drawerOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setDrawerOpen(false)}
+      />
+
+      {/* ── Drawer panel ── */}
+      <div
+        className={`fixed top-0 left-0 z-50 h-full w-full max-w-xs bg-white flex flex-col shadow-2xl transition-transform duration-300 ease-in-out ${
+          drawerOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Drawer header */}
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#F1F5F9]">
+          <Link href="/" className="flex items-center gap-2" onClick={() => setDrawerOpen(false)}>
+            <Image src="/medecro-logo.svg" alt="Medecro" width={28} height={28} />
+            <span className="font-semibold text-[16px] text-[#0F172A]">medecro.ai</span>
+          </Link>
+          <button
+            onClick={() => setDrawerOpen(false)}
+            className="w-8 h-8 rounded-full border border-[#E2E8F0] flex items-center justify-center text-[#64748B] hover:text-[#0F172A] transition-colors"
+            aria-label="Close menu"
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Drawer nav links */}
+        <nav className="flex-1 overflow-y-auto px-3 py-4">
+          <ul className="flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const isActive = activeLink === link.label;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={() => { setActiveLink(link.label); setDrawerOpen(false); }}
+                    className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all ${
+                      isActive
+                        ? "bg-gradient-to-r from-[#EFF6FF] to-[#ECFDF5] text-[#2563EB]"
+                        : "text-[#0F172A] hover:bg-[#F8FAFC]"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      size={16}
+                      className={isActive ? "text-[#2563EB]" : "text-[#94A3B8]"}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Decorative gradient blob */}
+          <div className="mt-8 mx-4 h-16 rounded-2xl bg-gradient-to-r from-[#2563EB]/10 to-[#10B981]/10 blur-xl" />
+        </nav>
+
+        {/* Drawer footer CTAs */}
+        <div className="px-5 py-5 border-t border-[#F1F5F9] flex flex-col gap-3">
           <Link
-            href="/contact"
-            className="text-sm text-[#10B981] font-medium border border-[#10B981] rounded-full px-5 py-2 hover:bg-[#10B981]/10 transition-colors"
+            href="/login"
+            onClick={() => setDrawerOpen(false)}
+            className="w-full text-center py-3 rounded-full border border-[#10B981] text-[#10B981] text-sm font-semibold hover:bg-[#10B981]/10 transition-colors"
           >
             Login
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#10B981] text-white text-sm font-semibold hover:opacity-90 transition-opacity shadow-sm"
+            onClick={() => setDrawerOpen(false)}
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-gradient-to-r from-[#2563EB] to-[#10B981] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            Book Demo <span>
-              <Image
-                src={"/demo-arrow.svg"}
-                alt="demo-arrow"
-                width={10}
-                height={10}
-                className="w-4 h-4"
-              />
-            </span>
+            Book Demo
+            <Image src="/demo-arrow.svg" alt="" width={14} height={14} />
           </Link>
         </div>
-
-        {/* Mobile menu toggle */}
-        <button
-          className="md:hidden p-2 rounded-md text-[#64748B] hover:text-[#0F172A]"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
-      </nav>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-white border-b border-[#E2E8F0] px-4 pb-4">
-          <ul className="flex flex-col gap-2 pt-2">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block py-2 text-sm text-[#64748B] hover:text-[#0F172A] font-medium"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-2">
-              <Link
-                href="#contact"
-                className="block w-full text-center px-4 py-2 rounded-lg bg-[#2563EB] text-white text-sm font-semibold"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get Started
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }

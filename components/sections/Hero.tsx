@@ -34,24 +34,23 @@ export default function Hero() {
         <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-green-100/20 blur-3xl" />
       </div>
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 text-center">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 text-center">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-[family-name:var(--font-fraunces)] leading-none text-[#0F172A] mb-5"
-          style={{ fontSize: "64px" }}
+          className="font-[family-name:var(--font-fraunces)] leading-none text-[#0F172A] mb-5 text-[38px] sm:text-[52px] lg:text-[64px]"
         >
           <span className="font-bold not-italic block">Clinical Intelligence,</span>
-          <span className="font-normal italic block" style={{ color: "#0316FF" }}>
+          <span className="font-normal italic block text-[#0316FF]">
             Reimagined
           </span>
         </motion.h1>
 
         {/* Description */}
         <motion.p
-          className="text-lg text-[#64748B] leading-relaxed mb-8 max-w-3xl mx-auto"
+          className="text-base sm:text-lg text-[#64748B] leading-relaxed mb-8 max-w-2xl mx-auto px-2"
           custom={0.3}
           variants={fadeUp}
           initial="hidden"
@@ -97,18 +96,16 @@ export default function Hero() {
           <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-widest mb-5">
             Trusted by clinics across India
           </p>
-          <div className="flex flex-nowrap justify-center items-center gap-3">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-3">
             {clinics.map((c) => (
               <div
                 key={c.name}
-                className="flex items-center gap-2.5 bg-white border border-[#E2E8F0] rounded-full px-3 py-2 shadow-sm shrink-0"
+                className="flex items-center gap-2.5 bg-white border border-[#E2E8F0] rounded-full px-3 py-2 shadow-sm"
               >
-                <div
-                  className={`w-7 h-7 rounded-full ${c.color} flex items-center justify-center flex-shrink-0`}
-                >
+                <div className={`w-7 h-7 rounded-full ${c.color} flex items-center justify-center flex-shrink-0`}>
                   <span className="text-[10px] font-bold text-white">{c.initials}</span>
                 </div>
-                <span className="text-sm text-[#374151] font-medium pr-1">{c.name}</span>
+                <span className="text-sm text-[#374151] font-medium pr-1 whitespace-nowrap">{c.name}</span>
               </div>
             ))}
           </div>

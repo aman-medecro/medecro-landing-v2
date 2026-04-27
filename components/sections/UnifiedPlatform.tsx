@@ -89,7 +89,7 @@ export default function UnifiedPlatform() {
   const Icon = active.icon;
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-white">
+    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -98,16 +98,10 @@ export default function UnifiedPlatform() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <span
-            className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block"
-            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
-          >
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Full Platform
           </span>
-          <h2
-            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4"
-            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px" }}
-          >
+          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">
             Everything under one roof.
           </h2>
           <p className="text-[#64748B] text-base max-w-md mx-auto">
@@ -115,18 +109,19 @@ export default function UnifiedPlatform() {
           </p>
         </motion.div>
 
-        {/* Tab list */}
+        {/* Tab list — horizontally scrollable on mobile/tablet */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-nowrap items-center  mb-8 justify-center"
+          className="mb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0"
         >
-          {features.map((f) => (
-            <div key={f.id} className="flex items-center shrink-0">
+          <div className="flex overflow-x-auto lg:flex-wrap lg:justify-center gap-1 pb-1 scrollbar-none">
+            {features.map((f) => (
               <button
+                key={f.id}
                 onClick={() => setActiveId(f.id)}
-                className={`px-3 py-1 rounded-full text-sm transition-all font-medium whitespace-nowrap ${
+                className={`px-3 py-1.5 rounded-full text-sm transition-all font-medium whitespace-nowrap shrink-0 ${
                   activeId === f.id
                     ? "border border-[#2563EB] text-[#2563EB]"
                     : "text-[#64748B] hover:text-[#0F172A]"
@@ -134,9 +129,8 @@ export default function UnifiedPlatform() {
               >
                 {f.tab}
               </button>
-      
-            </div>
-          ))}
+            ))}
+          </div>
         </motion.div>
 
         {/* Content card */}
@@ -145,7 +139,7 @@ export default function UnifiedPlatform() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-[#F5F7FA] rounded-2xl px-8 py-16 flex flex-col items-center text-center"
+          className="bg-[#F5F7FA] rounded-2xl px-6 sm:px-8 py-12 sm:py-16 flex flex-col items-center text-center"
         >
           <div className="w-14 h-14 rounded-2xl border-2 border-[#2563EB] flex items-center justify-center mb-6">
             <Icon size={26} className="text-[#2563EB]" strokeWidth={1.5} />
