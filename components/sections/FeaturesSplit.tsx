@@ -9,6 +9,7 @@ const modules = [
   {
     id: "ai-xray",
     tab: "AI X-ray Analyser",
+    shortTab: "X-ray Analyser",
     label: "AI X-RAY ANALYSER",
     status: "BETA",
     statusColor: "bg-orange-100 text-orange-600",
@@ -28,6 +29,7 @@ const modules = [
   {
     id: "clinic-os",
     tab: "Intelligent Clinic OS",
+    shortTab: "Clinic OS",
     label: "INTELLIGENT CLINIC OS",
     status: "LIVE",
     statusColor: "bg-green-100 text-green-600",
@@ -47,6 +49,7 @@ const modules = [
   {
     id: "rx-intelligence",
     tab: "Rx Intelligence",
+    shortTab: "Rx Intelligence",
     label: "RX INTELLIGENCE",
     status: "LIVE",
     statusColor: "bg-green-100 text-green-600",
@@ -66,6 +69,7 @@ const modules = [
   {
     id: "ai-communication",
     tab: "AI Communication",
+    shortTab: "Communication",
     label: "AI COMMUNICATION",
     status: "COMING SOON",
     statusColor: "bg-blue-100 text-blue-600",
@@ -101,16 +105,10 @@ export default function FeaturesSplit() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <span
-            className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block"
-            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
-          >
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Modules
           </span>
-          <h2
-            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4"
-            style={{ fontSize: "56px", lineHeight: "86px", letterSpacing: "-1.62px" }}
-          >
+          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4 text-[34px] sm:text-[44px] lg:text-[56px] leading-tight tracking-[-1px]">
             Everything your clinic needs.
             <br />
             Nothing it doesn&apos;t.
@@ -126,23 +124,24 @@ export default function FeaturesSplit() {
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex justify-center mb-10"
+          className="mb-10"
         >
-          <div className="inline-flex items-center gap-1 bg-white border border-[#E2E8F0] rounded-full px-2 py-2 shadow-sm">
+          <div className="flex overflow-x-auto sm:justify-center gap-2 pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             {modules.map((m) => (
               <button
                 key={m.id}
                 onClick={() => setActiveId(m.id)}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap shrink-0 transition-all border ${
                   activeId === m.id
-                    ? "bg-[#2563EB] text-white shadow-sm"
-                    : "text-[#374151] hover:text-[#0F172A]"
+                    ? "bg-[#2563EB] text-white border-[#2563EB] shadow-sm"
+                    : "text-[#374151] bg-white border-[#E2E8F0] hover:text-[#0F172A]"
                 }`}
               >
                 {activeId !== m.id && (
                   <span className="w-1.5 h-1.5 rounded-full bg-gray-400 flex-shrink-0" />
                 )}
-                {m.tab}
+                <span className="hidden sm:inline">{m.tab}</span>
+                <span className="sm:hidden">{m.shortTab}</span>
               </button>
             ))}
           </div>
@@ -154,10 +153,11 @@ export default function FeaturesSplit() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="grid lg:grid-cols-2 gap-10 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center"
         >
           {/* Left */}
           <div>
+            {/* Badge + title */}
             <div className="flex items-center gap-2 mb-4">
               <span className="text-xs font-semibold text-[#2563EB] uppercase tracking-widest">
                 {active.label}
@@ -172,8 +172,13 @@ export default function FeaturesSplit() {
             <h3 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-4xl font-bold leading-tight mb-3">
               {active.titleBold}
               <br />
-              <span style={{ color: "#2563EB" }}>{active.titleBlue}</span>
+              <span className="text-[#2563EB]">{active.titleBlue}</span>
             </h3>
+
+            {/* Mobile-only image — shown between title and description */}
+            <div className="md:hidden my-5">
+              <div className="w-full aspect-[4/3] rounded-2xl bg-[#D1D5DB] shadow-lg" />
+            </div>
 
             <p className="text-[#64748B] text-sm leading-relaxed mb-6 max-w-sm">
               {active.description}
@@ -196,8 +201,8 @@ export default function FeaturesSplit() {
             </Link>
           </div>
 
-          {/* Right: placeholder */}
-          <div className="w-full aspect-[4/3] rounded-2xl bg-[#D1D5DB] shadow-lg" />
+          {/* Right: placeholder — hidden on mobile, shown md+ */}
+          <div className="hidden md:block w-full aspect-[4/3] rounded-2xl bg-[#D1D5DB] shadow-lg" />
         </motion.div>
       </div>
     </section>

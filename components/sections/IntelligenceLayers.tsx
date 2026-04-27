@@ -59,31 +59,22 @@ export default function IntelligenceLayers() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-[#F5F7FA]">
+    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-[#F5F7FA]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12"
         >
-          <span
-            className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block"
-            style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
-          >
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Architecture
           </span>
-          <h2
-            className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A]"
-            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px" }}
-          >
+          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">
             Five intelligence layers.
           </h2>
-          <h2
-            className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5"
-            style={{ fontSize: "48px", lineHeight: "1.15", letterSpacing: "-1px", color: "#2563EB" }}
-          >
+          <h2 className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px] text-[#2563EB]">
             One unified platform.
           </h2>
           <p className="text-[#64748B] text-sm leading-relaxed max-w-md mx-auto">
@@ -125,10 +116,10 @@ export default function IntelligenceLayers() {
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white rounded-2xl p-6 border border-[#E2E8F0] flex items-center justify-between gap-6"
+          className="bg-white rounded-2xl p-6 border border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6"
         >
-          <div className="flex items-center gap-4">
-            <billing.icon size={28} className={billing.iconColor} strokeWidth={1.5} />
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <billing.icon size={28} className={`${billing.iconColor} shrink-0`} strokeWidth={1.5} />
             <div>
               <h3 className="text-base font-bold text-[#0F172A] mb-1">{billing.title}</h3>
               <p className="text-sm text-[#64748B] leading-relaxed max-w-lg">

@@ -37,51 +37,37 @@ export default function ComparisonTable() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-white">
+    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
 
           {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-          >
-            <span
-              className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block"
-              style={{ fontSize: "11px", lineHeight: "17.6px", letterSpacing: "1.65px" }}
-            >
+          <div className="text-center lg:text-left">
+            <span className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
               The Difference
             </span>
-            <h2
-              className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-5"
-              style={{ fontSize: "56px", lineHeight: "64px", letterSpacing: "-1px" }}
-            >
+            <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-5 text-[34px] sm:text-[44px] lg:text-[56px] leading-tight lg:leading-[64px] tracking-[-1px]">
               Most software manages your clinic. Medecro{" "}
-              <em
-                className="not-italic italic"
-                style={{ fontWeight: 400, color: "#2563EB" }}
-              >
+              <em className="not-italic italic font-normal text-[#2563EB]">
                 thinks
               </em>{" "}
               with it.
             </h2>
-            <p
-              className="font-[family-name:var(--font-outfit)] mb-8 max-w-sm"
-              style={{ fontWeight: 400, fontSize: "18px", lineHeight: "27.2px", color: "#6C6C6C" }}
-            >
+            <p className="font-[family-name:var(--font-outfit)] font-normal text-[#6C6C6C] mb-8 max-w-sm text-base sm:text-[18px] leading-relaxed sm:leading-[27.2px] mx-auto lg:mx-0">
               Generic EMRs record what happened. Medecro&apos;s Intelligence OS
               processes clinical signals, surfaces insights, and automates the
               decisions that currently live inside your head — so you focus
               entirely on the patient in front of you.
             </p>
-            <Link
-              href="/platform"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0316FF] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
-            >
-              See the Intelligence Layer →
-            </Link>
-          </motion.div>
+            <div className="flex justify-center lg:justify-start">
+              <Link
+                href="/platform"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0316FF] text-white text-sm font-semibold hover:opacity-90 transition-opacity"
+              >
+                See the Intelligence Layer →
+              </Link>
+            </div>
+          </div>
 
           {/* Right — comparison table */}
           <motion.div
@@ -93,18 +79,12 @@ export default function ComparisonTable() {
             {/* Header row */}
             <div className="grid grid-cols-2">
               <div className="px-5 py-3 border-b border-[#E2E8F0] bg-[#FF503C1A]">
-                <span
-                  className="font-[family-name:var(--font-dm-sans)] font-bold text-[#FF6050] uppercase"
-                  style={{ fontSize: "10px", letterSpacing: "1.2px" }}
-                >
+                <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#FF6050] uppercase text-[10px] tracking-[1.2px]">
                   Generic EMR
                 </span>
               </div>
               <div className="px-5 py-3 border-b border-[#E2E8F0] bg-[#0316FF26]">
-                <span
-                  className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase"
-                  style={{ fontSize: "10px", letterSpacing: "1.2px" }}
-                >
+                <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase text-[10px] tracking-[1.2px]">
                   Medecro AI
                 </span>
               </div>
@@ -117,12 +97,12 @@ export default function ComparisonTable() {
                 initial={{ opacity: 0 }}
                 animate={inView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.35, delay: 0.2 + i * 0.06 }}
-                className="grid grid-cols-2 border-b last:border-b-0 border-[#E2E8F0]"
+                className="grid grid-cols-2 border-b last:border-b-0 border-[#FFFFFF14]"
               >
                 <div className="px-5 py-3.5 text-sm text-[#64748B] bg-[#FF503C08]">
                   {row.generic}
                 </div>
-                <div className="px-5 py-3.5 bg-[#EEF2FF] flex items-center gap-2">
+                <div className="px-5 py-3 bg-[#EEF2FF] flex items-center gap-2">
                   <Check size={13} className="text-[#16A34A] flex-shrink-0" strokeWidth={3} />
                   <span className="text-sm font-semibold text-[#0F172A]">
                     {row.medecro}
