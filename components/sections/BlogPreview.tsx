@@ -1,133 +1,127 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import Link from "next/link";
-import { Clock, ArrowRight } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
-const posts = [
+const featured = {
+  date: "Dec 21, 2025",
+  title: "The Next-Gen Choice: Best Dental Clinic Management Software in India",
+  excerpt: [
+    "If you are looking for the \"best dental clinic management software in India\", you are in the right place. This space is moving very fast, and with AI and automation making their way into how clinics modernise their workflows, that pace is only increasing.",
+    "In this article, we discuss what dental clinic management software is, the features to look for, review and compare ten systems (with a clear winner), and help you pick the best from the pack for your practice.",
+    "And yes - Our choice as best in class for a modern, AI-driven platform in India is Medecro.ai, as the next-gen solution.",
+  ],
+  slug: "best-dental-clinic-management-software-india",
+};
+
+const latest = [
   {
-    title: "How AI Diagnostics is Reducing Misdiagnosis Rates in Indian Clinics",
-    category: "AI & Healthcare",
-    categoryColor: "bg-blue-100 text-blue-700",
-    readTime: "5 min read",
-    slug: "ai-diagnostics-india",
-    excerpt:
-      "Exploring how machine learning trained on Indian patient data is catching what traditional methods miss in busy OPD settings.",
-    gradient: "from-blue-400 to-indigo-600",
+    title: "Top Dental Industry Trends That Are Changing Patient Care Forever",
+    date: "Dec 21, 2025",
+    slug: "dental-industry-trends",
   },
   {
-    title: "The Hidden Cost of Paper-Based Records: What Indian Clinics Lose Every Month",
-    category: "Practice Management",
-    categoryColor: "bg-green-100 text-green-700",
-    readTime: "4 min read",
-    slug: "paper-records-cost-india",
-    excerpt:
-      "A data-driven breakdown of time, revenue, and compliance risks that paper medical records introduce — and how to eliminate them.",
-    gradient: "from-green-400 to-teal-600",
+    title: "How Artificial Intelligence is Revolutionizing Dental Diagnostics",
+    date: "Jan 15, 2026",
+    slug: "ai-dental-diagnostics",
   },
   {
-    title: "DPDP Act 2023: What Every Indian Doctor Needs to Know About Patient Data",
-    category: "Compliance",
-    categoryColor: "bg-amber-100 text-amber-700",
-    readTime: "6 min read",
-    slug: "dpdp-act-doctors-guide",
-    excerpt:
-      "A plain-English guide to India's Digital Personal Data Protection Act and what obligations it creates for clinic owners.",
-    gradient: "from-amber-400 to-orange-600",
+    title: "The Rise of Teledentistry: Bridging the Gap in Oral Health Access",
+    date: "Feb 10, 2026",
+    slug: "rise-of-teledentistry",
+  },
+  {
+    title: "Advancements in Dental Implants: What Patients Need to Know",
+    date: "Mar 5, 2026",
+    slug: "dental-implants-advancements",
   },
 ];
 
 export default function BlogPreview() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-[#F8FAFC]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 lg:py-28 bg-[#F0F4F8]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55 }}
-          className="flex items-end justify-between mb-12"
-        >
-          <div>
-            <span className="inline-block px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-[#2563EB] uppercase tracking-wide mb-3">
-              Blog
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A]">
-              Read something new today.
-            </h2>
-          </div>
-          <Link
-            href="/blog"
-            className="hidden sm:flex items-center gap-1.5 text-sm font-semibold text-[#2563EB] hover:underline"
-          >
-            All articles <ArrowRight size={14} />
-          </Link>
-        </motion.div>
+        <div className="text-center mb-8">
+          <span className="block font-bold uppercase text-[#2563EB] mb-3 text-[11px] leading-[17.6px] tracking-[1.65px]">
+            Our Blogs
+          </span>
+          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[40px] leading-[1.15] tracking-[-1px]">
+            Read something new today
+          </h2>
+        </div>
 
-        {/* Posts */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post, i) => (
-            <motion.article
-              key={post.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.55,
-                delay: i * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="bg-white rounded-2xl border border-[#E2E8F0] overflow-hidden hover:shadow-md transition-shadow group"
-            >
-              {/* Thumbnail */}
-              <div
-                className={`h-44 bg-gradient-to-br ${post.gradient} flex items-end p-4`}
+        {/* Main card */}
+        <div className="overflow-hidden">
+
+          {/* Featured post */}
+          <div className="grid md:grid-cols-2 gap-8 p-8 items-center">
+            {/* Left: text */}
+            <div>
+              <div className="flex items-center gap-1.5 text-[#64748B] text-xs mb-3">
+                <CalendarDays size={13} className="shrink-0" />
+                <span>{featured.date}</span>
+              </div>
+              <h3 className="font-[family-name:var(--font-fraunces)] font-semibold text-[#1E1E1E] text-[30px] leading-none tracking-[-1px] mb-4">
+                {featured.title}
+              </h3>
+              <p className="font-[family-name:var(--font-outfit)] font-normal text-[#6C6C6C] text-[15px] leading-[156%] tracking-[1px] mb-4 line-clamp-3">
+                {featured.excerpt[0]}
+              </p>
+              <Link
+                href={`/blog/${featured.slug}`}
+                className="text-[#2563EB] text-sm font-semibold hover:underline"
               >
-                <span
-                  className={`text-xs font-semibold px-2.5 py-1 rounded-full ${post.categoryColor} bg-white/90`}
-                >
-                  {post.category}
-                </span>
-              </div>
+                Read More →
+              </Link>
+            </div>
 
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex items-center gap-1.5 text-[#64748B] mb-3">
-                  <Clock size={12} />
-                  <span className="text-xs">{post.readTime}</span>
-                </div>
+            {/* Right: image placeholder */}
+            <div className="w-full aspect-[4/3] rounded-xl bg-[#E2E8F0]" />
+          </div>
 
-                <h3 className="font-bold text-[#0F172A] text-sm leading-snug mb-3 group-hover:text-[#2563EB] transition-colors">
-                  {post.title}
-                </h3>
-
-                <p className="text-xs text-[#64748B] leading-relaxed mb-4">
-                  {post.excerpt}
-                </p>
-
+  
+          {/* Latest articles */}
+          <div className="bg-white border border-[#E2E8F0] rounded-2xl p-6">
+            <h4
+              className="font-[family-name:var(--font-fraunces)] text-[#000000] mb-5"
+              style={{ fontWeight: 400, fontSize: 32, lineHeight: "100%", letterSpacing: "0px" }}
+            >
+              Latest Articles
+            </h4>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
+              {latest.map((article) => (
                 <Link
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-[#2563EB] hover:underline"
+                  key={article.slug}
+                  href={`/blog/${article.slug}`}
+                  className="group flex flex-col gap-3"
                 >
-                  Read article <ArrowRight size={12} />
+                  <div className="w-full aspect-[4/3] rounded-xl bg-[#D9DEE4] group-hover:bg-[#C8CDD3] transition-colors" />
+                  <div>
+                    <p className="text-[#0F172A] text-[13px] font-medium leading-snug mb-2 group-hover:text-[#2563EB] transition-colors line-clamp-3">
+                      {article.title}
+                    </p>
+                    <div className="flex items-center gap-1 text-[#94A3B8] text-[11px]">
+                      <CalendarDays size={11} className="shrink-0" />
+                      <span>{article.date}</span>
+                    </div>
+                  </div>
                 </Link>
-              </div>
-            </motion.article>
-          ))}
+              ))}
+            </div>
+          </div>
+
         </div>
 
-        {/* Mobile all articles link */}
-        <div className="sm:hidden text-center mt-6">
+        {/* See more */}
+        <div className="text-center mt-6">
           <Link
             href="/blog"
-            className="text-sm font-semibold text-[#2563EB] hover:underline"
+            className="text-[#2563EB] text-sm font-semibold hover:underline"
           >
-            View all articles →
+            See More Blogs →
           </Link>
         </div>
+
       </div>
     </section>
   );

@@ -1,32 +1,37 @@
 export const faqItems = [
   {
-    question: "How does Medecro's AI diagnostics actually work?",
+    question: "What is Medecro.ai?",
     answer:
-      "Medecro's AI is trained on millions of anonymised Indian patient records across 12+ specialities. When you enter a patient's symptoms, vitals, and history, the AI cross-references this against known patterns to suggest differential diagnoses ranked by probability. It's a decision-support tool — you stay in control, the AI just makes sure you have the best information available.",
+      "Medecro.ai is an AI-powered clinic management platform built specifically for Indian doctors. It combines smart EMR, OPD scheduling, AI prescriptions, billing, and diagnostics into one unified system — designed around how Indian clinics actually work.",
   },
   {
-    question: "How long does it take to set up Medecro for my clinic?",
+    question: "How does AI dental X-ray analysis work?",
     answer:
-      "Most single-doctor clinics are live within 4 hours. Our onboarding team handles data migration from your existing system (paper or digital), configures your speciality workflows, trains your staff via a 45-minute video session, and sets up your billing templates. Multi-doctor or multi-branch setups take 1–2 business days.",
+      "Medecro's AI analyses uploaded dental X-rays in seconds, flagging cavities, bone loss, impactions, and other anomalies with visual overlays. It's trained on a large dataset of Indian dental imaging and acts as a second pair of eyes — the final diagnosis always remains with the doctor.",
   },
   {
-    question: "Is my patients' data safe with Medecro?",
+    question: "Is Medecro suitable for GPIM / general practice?",
     answer:
-      "Absolutely. All data is encrypted with 256-bit AES both in transit and at rest, stored on servers physically located in India in compliance with the DPDP Act 2023 and NMC guidelines. We are SOC2 Type II certified and have maintained a zero-breach record since inception. You own your data — we never sell, share, or use it for any purpose beyond running your clinic.",
+      "Yes. Medecro has dedicated workflows for General Practice and Internal Medicine including multi-system SOAP notes, chronic disease tracking, SNOMED-mapped diagnoses, and customisable prescription templates built for GP consult patterns.",
   },
   {
-    question: "What does Medecro cost? Is there a free trial?",
+    question: "What channels does AI Communication support?",
     answer:
-      "Medecro offers a 14-day free trial with no credit card required. Paid plans start at ₹2,999/month for single-doctor clinics and scale based on the number of doctors and branches. Annual plans include a 20% discount. Enterprise pricing is available for hospital groups and chains. All plans include unlimited patients, unlimited appointments, and full AI access.",
+      "AI Communication supports WhatsApp, SMS, and email for automated appointment reminders, follow-up messages, prescription delivery, lab report sharing, and patient feedback collection — all configurable per clinic preference.",
   },
   {
-    question: "Can I migrate my existing patient data from another software?",
+    question: "What is SNOMED data mapping in Rx Intelligence?",
     answer:
-      "Yes. Our team supports free data migration from most common clinic management software including Practo, Lybrate, MocDoc, eHospital, and custom Excel/paper records. The process is handled by our technical team with zero downtime for your clinic. We also support importing data via standard HL7 and FHIR formats.",
+      "SNOMED CT is an internationally recognised clinical terminology standard. Medecro maps every diagnosis, drug, and procedure to SNOMED codes, ensuring your records are interoperable, compliance-ready, and exportable to any future health system.",
   },
   {
-    question: "Does Medecro work for multi-doctor or multi-branch clinics?",
+    question: "Which specialities does Medecro support?",
     answer:
-      "Medecro is built for multi-doctor and multi-branch setups. You can manage all branches from a single dashboard, set role-based access for each doctor and staff member, view consolidated reports across branches, and maintain separate billing and EMR for each location. We currently support clinics with up to 50 doctors and 20 branches under one account.",
+      "Medecro currently supports 12+ specialities including Dental, General Practice, Cardiology, Dermatology, Orthopaedics, Gynaecology, Ophthalmology, Paediatrics, Psychiatry, ENT, Radiology, and Pathology — with more being added based on Founding Partner feedback.",
+  },
+  {
+    question: "How is Medecro different from a generic EMR?",
+    answer:
+      "Generic EMRs are built for documentation. Medecro is built for clinical intelligence — AI diagnostics, voice-to-text notes, SNOMED mapping, predictive scheduling, and revenue insights are native, not bolt-ons. Every workflow is speciality-specific, not one-size-fits-all.",
   },
 ];
