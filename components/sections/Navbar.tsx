@@ -2,20 +2,36 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, X } from "lucide-react";
+import { ChevronDown, X, MessageSquare, Calendar, Brain, BarChart3 } from "lucide-react";
 import Image from "next/image";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/platform", label: "Platform", hasDropdown: true },
-  { href: "/specialities", label: "Specialities", hasDropdown: true },
-  { href: "/resources", label: "Resources", hasDropdown: true },
-  { href: "/company", label: "Company", hasDropdown: true },
+  { href: "/specialities", label: "Specialities" },
+  { href: "/resources", label: "Resources" },
+  { href: "/company", label: "Company" },
+];
+
+const platformItems = [
+  { href: "/platform/ai-communication", label: "AI Communication", icon: MessageSquare, description: "Automate patient outreach & follow-ups" },
+  { href: "/platform/smart-scheduling", label: "Smart Scheduling", icon: Calendar, description: "Intelligent appointment management" },
+  { href: "/platform/clinical-insights", label: "Clinical Insights", icon: Brain, description: "AI-powered clinical decision support" },
+  { href: "/platform/analytics", label: "Analytics & Reporting", icon: BarChart3, description: "Track outcomes and performance metrics" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Platform");
+  const [drawerPlatformOpen, setDrawerPlatformOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -59,21 +75,59 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop (lg+): nav links */}
-          <ul className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-flex items-center gap-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
-                >
-                  {link.label}
-                  {link.hasDropdown && <ChevronDown size={14} className="text-[#94A3B8]" />}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavigationMenu className="hidden lg:flex">
+            <NavigationMenuList className="gap-2">
 
-          {/* Desktop (lg+): CTAs only */}
+              {/* Platform with dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                  className={cn(
+                    "bg-transparent hover:bg-transparent focus:bg-transparent data-popup-open:bg-transparent",
+                    "text-sm font-medium text-[#0F172A] hover:text-[#2563EB] px-2 h-auto py-1",
+                    "data-popup-open:text-[#2563EB]"
+                  )}
+                >
+                  Platform
+                </NavigationMenuTrigger>
+                <NavigationMenuContent className="p-0">
+                  <ul className="w-72 p-2 bg-white rounded-lg">
+                    {platformItems.map(({ href, label, icon: Icon, description }) => (
+                      <li key={href}>
+                        <NavigationMenuLink
+                          render={<Link href={href} />}
+                          className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] transition-colors group"
+                        >
+                          <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
+                            <Icon size={15} className="text-[#2563EB]" />
+                          </span>
+                          <span>
+                            <span className="block text-sm font-medium text-[#0F172A] group-hover:text-[#2563EB] transition-colors">{label}</span>
+                            <span className="block text-xs text-[#64748B] mt-0.5">{description}</span>
+                          </span>
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Other nav links */}
+              {navLinks.map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
+                  >
+                    {link.label}
+                    <ChevronDown size={14} className="text-[#94A3B8]" />
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          {/* Desktop (lg+): CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/login"
@@ -147,6 +201,51 @@ export default function Navbar() {
         {/* Drawer nav links */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
           <ul className="flex flex-col gap-1">
+
+            {/* Platform with expandable sub-items */}
+            <li>
+              <button
+                onClick={() => setDrawerPlatformOpen((v) => !v)}
+                className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all ${
+                  activeLink === "Platform"
+                    ? "bg-gradient-to-r from-[#EFF6FF] to-[#ECFDF5] text-[#2563EB]"
+                    : "text-[#0F172A] hover:bg-[#F8FAFC]"
+                }`}
+              >
+                Platform
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${drawerPlatformOpen ? "rotate-180 text-[#2563EB]" : activeLink === "Platform" ? "text-[#2563EB]" : "text-[#94A3B8]"}`}
+                />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-200 ${
+                  drawerPlatformOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="mt-1 ml-3 flex flex-col gap-0.5">
+                  {platformItems.map(({ href, label, icon: Icon, description }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        onClick={() => { setActiveLink("Platform"); setDrawerOpen(false); }}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] text-[#334155] hover:bg-[#F8FAFC] hover:text-[#2563EB] transition-colors group"
+                      >
+                        <span className="w-7 h-7 rounded-lg bg-[#F1F5F9] flex items-center justify-center shrink-0 group-hover:bg-[#DBEAFE] transition-colors">
+                          <Icon size={13} className="text-[#64748B] group-hover:text-[#2563EB] transition-colors" />
+                        </span>
+                        <span>
+                          <span className="block font-medium">{label}</span>
+                          <span className="block text-xs text-[#94A3B8]">{description}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+
+            {/* Other links */}
             {navLinks.map((link) => {
               const isActive = activeLink === link.label;
               return (
@@ -161,10 +260,7 @@ export default function Navbar() {
                     }`}
                   >
                     {link.label}
-                    <ChevronDown
-                      size={16}
-                      className={isActive ? "text-[#2563EB]" : "text-[#94A3B8]"}
-                    />
+                    <ChevronDown size={16} className={isActive ? "text-[#2563EB]" : "text-[#94A3B8]"} />
                   </Link>
                 </li>
               );
