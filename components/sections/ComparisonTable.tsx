@@ -43,12 +43,12 @@ export default function ComparisonTable() {
 
           {/* Left */}
           <div className="text-center lg:text-left">
-            <span className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
+            <span className="font-[family-name:var(--font-outfit)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
               The Difference
             </span>
             <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-5 text-[34px] sm:text-[44px] lg:text-[56px] leading-tight lg:leading-[64px] tracking-[-1px]">
               Most software manages your clinic. Medecro{" "}
-              <em className="not-italic italic font-normal text-[#2563EB]">
+              <em className="not-italic italic font-normal text-[#0316FF]">
                 thinks
               </em>{" "}
               with it.

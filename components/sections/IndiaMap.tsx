@@ -8,7 +8,7 @@ export default function IndiaMap() {
 
         {/* Text */}
         <div className="text-center lg:text-left">
-          <p className="font-[family-name:var(--font-outfit)] font-bold text-[11px] leading-[17.6px] tracking-[1.65px] uppercase text-[#2563EB] mb-4">
+          <p className="font-[family-name:var(--font-outfit)] font-bold text-[11px] leading-[17.6px] tracking-[1.65px] uppercase text-[#0316FF] mb-4">
             Clinics Across India
           </p>
 
@@ -18,7 +18,7 @@ export default function IndiaMap() {
               <br />
               Chennai.
             </span>
-            <span className="font-normal italic text-[#2563EB]">
+            <span className="font-normal italic text-[#0316FF]">
               {" "}Medecro is everywhere.
             </span>
           </h2>

@@ -14,7 +14,7 @@ export default function FAQ() {
 
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10">
-          <span className="block font-bold uppercase text-[#2563EB] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="block font-bold uppercase text-[#0316FF] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
             FAQ
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[28px] sm:text-[36px] lg:text-[44px] leading-tight tracking-[-1px] mb-4">
@@ -36,7 +36,7 @@ export default function FAQ() {
                 <span className="text-[#0F172A] text-sm font-medium pr-4">
                   {item.question}
                 </span>
-                <span className="text-[#2563EB] text-xl font-light leading-none shrink-0">
+                <span className="text-[#0316FF] text-xl font-light leading-none shrink-0">
                   {openIndex === i ? "×" : "+"}
                 </span>
               </button>

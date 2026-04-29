@@ -54,14 +54,14 @@ export default function SpecialityFlow() {
 
           {/* Left */}
           <div className="text-center lg:text-left">
-            <span className="block font-bold uppercase text-[#2563EB] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
+            <span className="block font-bold uppercase text-[#0316FF] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
               Early Access
             </span>
             <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[30px] sm:text-[36px] lg:text-[42px] leading-tight tracking-[-1px] mb-5">
               Get your speciality&apos;s
               <br />
               native flow{" "}
-              <span className="text-[#2563EB] italic">first.</span>
+              <span className="text-[#0316FF] italic">first.</span>
             </h2>
             <p className="text-[#64748B] text-sm sm:text-[15px] leading-[1.7] mb-8 max-w-sm mx-auto lg:mx-0">
               Founding Partners shape the product. Tell us your speciality and we&apos;ll build

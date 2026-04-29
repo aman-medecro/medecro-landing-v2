@@ -5,13 +5,11 @@ import Link from "next/link";
 import { ChevronDown, X, MessageSquare, Calendar, Brain, BarChart3 } from "lucide-react";
 import Image from "next/image";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuLink,
-} from "@/components/ui/navigation-menu";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -22,8 +20,8 @@ const navLinks = [
 
 const platformItems = [
   { href: "/platform/ai-communication", label: "AI Communication", icon: MessageSquare, description: "Automate patient outreach & follow-ups" },
-  { href: "/platform/smart-scheduling", label: "Smart Scheduling", icon: Calendar, description: "Intelligent appointment management" },
-  { href: "/platform/clinical-insights", label: "Clinical Insights", icon: Brain, description: "AI-powered clinical decision support" },
+  { href: "/platform/clinic-os", label: "Clinic OS", icon: Calendar, description: "Clinical OS" },
+  { href: "/platform/ai-x-ray-analyser", label: "AI X-Ray Analyser", icon: Brain, description: "AI X-Ray Analyser support" },
   { href: "/platform/analytics", label: "Analytics & Reporting", icon: BarChart3, description: "Track outcomes and performance metrics" },
 ];
 
@@ -75,57 +73,61 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop (lg+): nav links */}
-          <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList className="gap-2">
+          <ul className="hidden lg:flex items-center gap-8">
 
-              {/* Platform with dropdown */}
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
+            {/* Platform dropdown */}
+            <li>
+              <DropdownMenu>
+                <DropdownMenuTrigger
                   className={cn(
-                    "bg-transparent hover:bg-transparent focus:bg-transparent data-popup-open:bg-transparent",
-                    "text-sm font-medium text-[#0F172A] hover:text-[#2563EB] px-2 h-auto py-1",
-                    "data-popup-open:text-[#2563EB]"
+                    "inline-flex items-center gap-1 text-sm font-medium text-[#0F172A]",
+                    "hover:text-[#2563EB] transition-colors outline-none",
+                    "data-[state=open]:text-[#2563EB]"
                   )}
                 >
                   Platform
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="p-0">
-                  <ul className="w-72 p-2 bg-white rounded-lg">
-                    {platformItems.map(({ href, label, icon: Icon, description }) => (
-                      <li key={href}>
-                        <NavigationMenuLink
-                          render={<Link href={href} />}
-                          className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] transition-colors group"
-                        >
-                          <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
-                            <Icon size={15} className="text-[#2563EB]" />
-                          </span>
-                          <span>
-                            <span className="block text-sm font-medium text-[#0F172A] group-hover:text-[#2563EB] transition-colors">{label}</span>
-                            <span className="block text-xs text-[#64748B] mt-0.5">{description}</span>
-                          </span>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+                  <ChevronDown
+                    size={14}
+                    className="text-[#94A3B8] transition-transform duration-200 data-[state=open]:rotate-180"
+                  />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  sideOffset={12}
+                  className="w-72 p-2 rounded-2xl border border-[#E2E8F0] shadow-xl bg-white"
+                >
+                  {platformItems.map(({ href, label, icon: Icon, description }) => (
+                    <DropdownMenuItem
+                      key={href}
+                      render={<Link href={href} />}
+                      className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] transition-colors group cursor-pointer w-full"
+                    >
+                      <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
+                        <Icon size={15} className="text-[#2563EB]" />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-medium text-[#0F172A] group-hover:text-[#2563EB] transition-colors">{label}</span>
+                        <span className="block text-xs text-[#64748B] mt-0.5">{description}</span>
+                      </span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </li>
 
-              {/* Other nav links */}
-              {navLinks.map((link) => (
-                <NavigationMenuItem key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="inline-flex items-center gap-1 px-2 py-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
-                  >
-                    {link.label}
-                    <ChevronDown size={14} className="text-[#94A3B8]" />
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-
-            </NavigationMenuList>
-          </NavigationMenu>
+            {/* Other nav links */}
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="inline-flex items-center gap-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
+                >
+                  {link.label}
+                  <ChevronDown size={14} className="text-[#94A3B8]" />
+                </Link>
+              </li>
+            ))}
+          </ul>
 
           {/* Desktop (lg+): CTAs */}
           <div className="hidden lg:flex items-center gap-3">
