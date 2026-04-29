@@ -40,7 +40,7 @@ export default function BlogPreview() {
 
         {/* Header */}
         <div className="text-center mb-6 sm:mb-8">
-          <span className="block font-bold uppercase text-[#2563EB] mb-3 text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="block font-bold uppercase text-[#0316FF] mb-3 text-[11px] leading-[17.6px] tracking-[1.65px]">
             Our Blogs
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[28px] sm:text-[34px] lg:text-[40px] leading-tight tracking-[-1px]">
@@ -67,7 +67,7 @@ export default function BlogPreview() {
             </p>
             <Link
               href={`/blog/${featured.slug}`}
-              className="text-[#2563EB] text-sm font-semibold hover:underline"
+              className="text-[#0316FF] text-sm font-semibold hover:underline"
             >
               Read More →
             </Link>
@@ -105,7 +105,7 @@ export default function BlogPreview() {
         <div className="text-center mt-6">
           <Link
             href="/blog"
-            className="text-[#2563EB] text-sm font-semibold hover:underline"
+            className="text-[#0316FF] text-sm font-semibold hover:underline"
           >
             See More Blogs →
           </Link>

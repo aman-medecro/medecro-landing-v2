@@ -105,7 +105,7 @@ export default function FeaturesSplit() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Modules
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4 text-[34px] sm:text-[44px] lg:text-[56px] leading-tight tracking-[-1px]">
@@ -133,7 +133,7 @@ export default function FeaturesSplit() {
                 onClick={() => setActiveId(m.id)}
                 className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap shrink-0 transition-all border ${
                   activeId === m.id
-                    ? "bg-[#2563EB] text-white border-[#2563EB] shadow-sm"
+                    ? "bg-[#0316FF] text-white border-[#2563EB] shadow-sm"
                     : "text-[#374151] bg-white border-[#E2E8F0] hover:text-[#0F172A]"
                 }`}
               >
@@ -159,7 +159,7 @@ export default function FeaturesSplit() {
           <div>
             {/* Badge + title */}
             <div className="flex items-center gap-2 mb-4">
-              <span className="text-xs font-semibold text-[#2563EB] uppercase tracking-widest">
+              <span className="text-xs font-semibold text-[#0316FF] uppercase tracking-widest">
                 {active.label}
               </span>
               <span
@@ -172,7 +172,7 @@ export default function FeaturesSplit() {
             <h3 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-4xl font-bold leading-tight mb-3">
               {active.titleBold}
               <br />
-              <span className="text-[#2563EB]">{active.titleBlue}</span>
+              <span className="text-[#0316FF]">{active.titleBlue}</span>
             </h3>
 
             {/* Mobile-only image — shown between title and description */}
@@ -195,7 +195,7 @@ export default function FeaturesSplit() {
 
             <Link
               href={active.href}
-              className="text-sm font-semibold text-[#2563EB] hover:underline"
+              className="text-sm font-semibold text-[#0316FF] hover:underline"
             >
               {active.link} →
             </Link>

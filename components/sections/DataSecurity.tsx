@@ -43,7 +43,7 @@ export default function DataSecurity() {
 
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <span className="block font-bold uppercase text-[#2563EB] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="block font-bold uppercase text-[#0316FF] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
             Security &amp; Compliance
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4 text-[28px] sm:text-[36px] lg:text-[48px] leading-tight tracking-[-1px]">

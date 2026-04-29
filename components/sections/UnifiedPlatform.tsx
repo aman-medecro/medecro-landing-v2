@@ -98,7 +98,7 @@ export default function UnifiedPlatform() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Full Platform
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] mb-4 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import AICommunicationHero from "./sections/Hero";
-import AICommunicationFeatures from "./sections/Features";
+import ClinicOSHero from "./sections/Hero";
+import ClinicOSFeatures from "./sections/Features";
 import Stats from "@/components/sections/Stats";
 import IndiaMap from "@/components/sections/IndiaMap";
 import Testimonials from "@/components/sections/Testimonials";
@@ -9,22 +9,22 @@ import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
-  title: "AI Communication | Medecro.ai — Automated Patient Outreach for Indian Clinics",
+  title: "Clinic OS | Medecro.ai — India's First 360° AI-Powered Clinic Management Platform",
   description:
-    "Automate appointment reminders, follow-ups, and post-treatment care messages across WhatsApp and SMS. No manual effort, zero missed patients.",
+    "Run your clinic on autopilot. Appointments, prescriptions, billing, and follow-ups — unified under one intelligent platform built for every speciality.",
 };
 
-export default function AICommunicationPage() {
+export default function ClinicOSPage() {
   return (
     <>
-      <AICommunicationHero />
-      <AICommunicationFeatures />
+      <ClinicOSHero />
+      <ClinicOSFeatures />
       <Stats />
       <IndiaMap />
       <FAQ />
       <Testimonials />
       <SpecialityFlow />
       <Footer />
-</>
+    </>       
   );
 }

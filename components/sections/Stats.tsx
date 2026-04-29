@@ -1,7 +1,7 @@
 const stats = [
   {
     value: "90%",
-    color: "text-[#2563EB]",
+    color: "text-[#0316FF]",
     label: "Faster AI Diagnostics",
     sublabel: "Average speed improvement in AI-assisted diagnosis",
   },
@@ -13,7 +13,7 @@ const stats = [
   },
   {
     value: "92%",
-    color: "text-[#2563EB]",
+    color: "text-[#0316FF]",
     label: "Adherence Improvement",
     sublabel: "Improvement in patient appointment adherence rate",
   },
@@ -30,7 +30,7 @@ export default function Stats() {
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Label */}
-        <p className="font-[family-name:var(--font-outfit)] font-bold text-[11px] leading-[17.6px] tracking-[1.65px] uppercase text-[#2563EB] mb-4 text-center">
+        <p className="font-[family-name:var(--font-outfit)] font-bold text-[11px] leading-[17.6px] tracking-[1.65px] uppercase text-[#0316FF] mb-4 text-center">
           Platform Impact
         </p>
 

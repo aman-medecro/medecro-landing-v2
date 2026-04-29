@@ -68,13 +68,13 @@ export default function IntelligenceLayers() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10 sm:mb-12"
         >
-          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Architecture
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">
             Five intelligence layers.
           </h2>
-          <h2 className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px] text-[#2563EB]">
+          <h2 className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px] text-[#0316FF]">
             One unified platform.
           </h2>
           <p className="text-[#64748B] text-sm leading-relaxed max-w-md mx-auto">
@@ -102,7 +102,7 @@ export default function IntelligenceLayers() {
                 </p>
                 <Link
                   href={layer.href}
-                  className="text-sm font-semibold text-[#2563EB] hover:underline"
+                  className="text-sm font-semibold text-[#0316FF] hover:underline"
                 >
                   → {layer.link}
                 </Link>
@@ -129,7 +129,7 @@ export default function IntelligenceLayers() {
           </div>
           <Link
             href={billing.href}
-            className="text-sm font-semibold text-[#2563EB] hover:underline whitespace-nowrap shrink-0"
+            className="text-sm font-semibold text-[#0316FF] hover:underline whitespace-nowrap shrink-0"
           >
             {billing.link} →
           </Link>

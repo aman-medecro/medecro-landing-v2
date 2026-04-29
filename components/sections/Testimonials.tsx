@@ -82,7 +82,7 @@ export default function Testimonials() {
 
         {/* Header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span className="block font-bold uppercase text-[#2563EB] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="block font-bold uppercase text-[#0316FF] mb-4 text-[11px] leading-[17.6px] tracking-[1.65px]">
             Customer Stories
           </span>
           <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[28px] sm:text-[36px] lg:text-5xl leading-tight tracking-[-1px] mb-5">
@@ -178,7 +178,7 @@ export default function Testimonials() {
 
         {/* CTA */}
         <div className="text-center">
-          <Link href="#stories" className="text-[#2563EB] font-semibold text-sm hover:underline">
+          <Link href="#stories" className="text-[#0316FF] font-semibold text-sm hover:underline">
             See More Stories →
           </Link>
         </div>

@@ -27,10 +27,10 @@ export default function Specialities() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-10 sm:mb-12">
-          <span className="font-[family-name:var(--font-outfit)] font-bold text-[#2563EB] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
+          <span className="font-[family-name:var(--font-outfit)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Our Moat
           </span>
-          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0F172A] text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">
+          <h2 className="font-[family-name:var(--font-fraunces)] font-bold text-[#0316FF] text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px]">
             Every speciality is different.
           </h2>
           <h2 className="font-[family-name:var(--font-fraunces)] font-normal italic mb-5 text-[32px] sm:text-[40px] lg:text-[48px] leading-tight tracking-[-1px] text-[#2563EB]">
