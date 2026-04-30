@@ -4,7 +4,7 @@ import Image from "next/image";
 const features = [
   {
     icon: (
-      <Image src={"/whatsapp.svg"} alt="whatsapp" width={24} height={24}   />
+      <Image src={"/whatsapp.svg"} alt="whatsapp" width={24} height={24} />
     ),
     iconBg: "bg-[#18A6001A]",
     title: "WhatsApp Communication",
@@ -19,7 +19,7 @@ const features = [
   },
   {
     icon: (
-      <Image src={"/smart-phone-01.svg"} alt="whatsapp" width={24} height={24}   />
+      <Image src={"/smart-phone-01.svg"} alt="whatsapp" width={24} height={24} />
     ),
     iconBg: "bg-[#025ED714]",
     title: "SMS Alerts",
@@ -34,7 +34,7 @@ const features = [
   },
   {
     icon: (
-      <Image src={"/bell.svg"} alt="whatsapp" width={24} height={24}   />
+      <Image src={"/bell.svg"} alt="whatsapp" width={24} height={24} />
     ),
     iconBg: "bg-[#F8993914]",
     title: "Follow-up Reminders",
@@ -49,7 +49,7 @@ const features = [
   },
   {
     icon: (
-       <Image src={"/chatting-01.svg"} alt="whatsapp" width={24} height={24}   />
+      <Image src={"/chatting-01.svg"} alt="whatsapp" width={24} height={24} />
     ),
     iconBg: "bg-[#E100FF1A]",
     title: "Bulk Messaging",
@@ -64,7 +64,7 @@ const features = [
   },
   {
     icon: (
-      <Image src={"/stars.svg"} alt="whatsapp" width={24} height={24}   />
+      <Image src={"/stars.svg"} alt="whatsapp" width={24} height={24} />
     ),
     iconBg: "bg-[#E100FF1A]",
     title: "AI Marketing Studio",
@@ -81,53 +81,59 @@ const features = [
 
 export default function AICommunicationFeatures() {
   return (
-    <section className="py-20 bg-[#F8FAFC]">
+    <section className="py-10 sm:py-14 lg:py-20 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <p className="text-xs font-semibold uppercase tracking-widest text-[#2563EB] mb-3">
             COMMUNICATION FEATURES
           </p>
-          <h2 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-3xl sm:text-4xl lg:text-[46px] font-bold leading-tight mb-4">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-2xl sm:text-3xl lg:text-[46px] font-bold leading-tight mb-3 sm:mb-4">
             All-in-one platform to<br className="hidden sm:block" /> streamline your practice
           </h2>
-          <p className="text-[#64748B] text-base sm:text-lg max-w-xl mx-auto">
+          <p className="text-[#64748B] text-sm sm:text-base max-w-xl mx-auto">
             Built for the way Indian clinics actually work — across WhatsApp,
             SMS, and automated follow-ups.
           </p>
         </div>
 
         {/* Feature rows */}
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-10 sm:gap-12 lg:gap-16">
           {features.map(({ icon, iconBg, title, description, bullets }, i) => {
             const isEven = i % 2 === 0;
             return (
               <div
                 key={title}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center ${
                   isEven ? "" : "lg:[&>*:first-child]:order-2"
                 }`}
               >
                 {/* Text side */}
                 <div className="flex flex-col">
                   {/* Icon */}
-                  <div className={`w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center mb-5`}>
+                  <div className={`w-10 h-10 rounded-xl ${iconBg} flex items-center justify-center mb-4 sm:mb-5`}>
                     {icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-2xl sm:text-[28px] font-bold mb-3">
+                  <h3 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] text-xl sm:text-2xl lg:text-[28px] font-bold mb-2 sm:mb-3">
                     {title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-[#64748B] text-sm sm:text-base leading-relaxed mb-6">
+                  <p className="text-[#64748B] text-sm sm:text-base leading-relaxed mb-4 sm:mb-5">
                     {description}
                   </p>
 
+                  {/* Mobile-only image — between description and bullets */}
+                  <div className="lg:hidden relative w-full aspect-[16/10] rounded-2xl bg-white border border-[#E2E8F0] shadow-md overflow-hidden flex items-center justify-center mb-4 sm:mb-5">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#EFF6FF]/30 to-[#ECFDF5]/30" />
+                    <p className="relative text-xs text-[#CBD5E1]">[ {title} screenshot ]</p>
+                  </div>
+
                   {/* Bullets */}
-                  <ul className="flex flex-col gap-3">
+                  <ul className="flex flex-col gap-2.5 sm:gap-3">
                     {bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3 text-sm text-[#334155]">
                         <CheckCircle2 size={17} className="text-[#10B981] bg-[#E6FBF7] shrink-0 mt-0.5" />
@@ -137,8 +143,8 @@ export default function AICommunicationFeatures() {
                   </ul>
                 </div>
 
-                {/* Image placeholder */}
-                <div className="relative w-full aspect-[4/3] rounded-2xl bg-white border border-[#E2E8F0] shadow-md overflow-hidden flex items-center justify-center">
+                {/* Desktop-only image column */}
+                <div className="hidden lg:flex relative w-full aspect-[4/3] rounded-2xl bg-white border border-[#E2E8F0] shadow-md overflow-hidden items-center justify-center">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#EFF6FF]/30 to-[#ECFDF5]/30" />
                   <p className="relative text-xs text-[#CBD5E1]">[ {title} screenshot ]</p>
                 </div>

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 
@@ -90,21 +89,14 @@ const modules = [
 
 export default function FeaturesSplit() {
   const [activeId, setActiveId] = useState("rx-intelligence");
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const active = modules.find((m) => m.id === activeId)!;
 
   return (
-    <section ref={ref} className="py-20 lg:py-28 bg-[#F5F7FA]">
+    <section className="py-20 lg:py-28 bg-[#F5F7FA]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
+        <div className="text-center mb-10">
           <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Modules
           </span>
@@ -117,15 +109,10 @@ export default function FeaturesSplit() {
             Four AI-native modules that run every clinical touchpoint from first
             contact to last follow-up.
           </p>
-        </motion.div>
+        </div>
 
         {/* Tab switcher */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-10"
-        >
+        <div className="mb-10">
           <div className="flex overflow-x-auto sm:justify-center gap-2 pb-1 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
             {modules.map((m) => (
               <button
@@ -145,16 +132,10 @@ export default function FeaturesSplit() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Content */}
-        <motion.div
-          key={activeId}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center"
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           {/* Left */}
           <div>
             {/* Badge + title */}
@@ -203,7 +184,7 @@ export default function FeaturesSplit() {
 
           {/* Right: placeholder — hidden on mobile, shown md+ */}
           <div className="hidden md:block w-full aspect-[4/3] rounded-2xl bg-[#D1D5DB] shadow-lg" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

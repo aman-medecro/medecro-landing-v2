@@ -1,43 +1,43 @@
-"use client";
+const dotColors = ["#0316FF", "#F97316", "#18A600"];
 
 const items = [
-  { text: "clinics live across India", highlight: "2,000+" },
-  { text: "faster diagnostics", highlight: "AI X-ray: 90%" },
-  { text: "live now · GPIM & Psychiatry coming soon", highlight: "Dental module" },
-  { text: "medicines in Rx intelligence", highlight: "6.5L+" },
-  { text: "Patient adherence up", highlight: "92% on average" },
-  { text: "Complete prescription in", highlight: "under 10 seconds" },
-  { text: "HIPAA-ready · SOC2 compliant", highlight: "" },
+  { pre: "", bold: "2,000+", post: " clinics live across India" },
+  { pre: "AI X-ray: ", bold: "90% faster", post: " diagnostics" },
+  { pre: "Dental module ", bold: "live now", post: " · GPIM & Psychiatry coming soon" },
+  { pre: "", bold: "6.5L+", post: " medicines in Rx Intelligence" },
+  { pre: "Patient adherence up ", bold: "92%", post: " on average" },
+  { pre: "Complete prescription in ", bold: "under 10 seconds", post: "" },
+  { pre: "", bold: "HIPAA-ready", post: " · SOC2 compliant" },
 ];
 
-function TickerItem({ text, highlight }: { text: string; highlight: string }) {
+function StripItem({ pre, bold, post, dotColor }: { pre: string; bold: string; post: string; dotColor: string }) {
   return (
     <div className="flex items-center gap-8 flex-shrink-0">
-      <span className="text-sm text-[#374151] whitespace-nowrap">
-        {highlight && (
-          <strong className="font-semibold text-[#0F172A]">{highlight} </strong>
-        )}
-        {text}
-      </span>
-      <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] flex-shrink-0" />
+      <div className="flex items-center">
+        <span className="text-sm text-[#374151] whitespace-nowrap">
+          {pre}
+          <strong className="font-semibold text-[#0F172A]">{bold}</strong>
+          {post}
+        </span>
+        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: dotColor, marginLeft: '14px', marginRight: '14px' }} />
+      </div>
     </div>
   );
 }
 
 export default function LogoBar() {
-  const doubled = [...items, ...items];
+  const repeated = [...items, ...items, ...items, ...items];
 
   return (
-    <section className="border-y border-[#E2E8F0] bg-white py-3 overflow-hidden">
-      <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
-
-        <div className="flex animate-marquee gap-2">
-          {doubled.map((item, i) => (
-            <TickerItem key={i} {...item} />
-          ))}
-        </div>
+    <section className="border-y border-[#FFFFFF14] bg-[linear-gradient(90deg,rgba(3,22,255,0.08)_0%,rgba(3,22,255,0)_50%,rgba(24,166,0,0.08)_100%)] py-3.5 overflow-hidden">
+      <div className="flex animate-marquee w-max items-center">
+        {repeated.map((item, i) => (
+          <StripItem
+            key={i}
+            {...item}
+            dotColor={dotColors[i % dotColors.length]}
+          />
+        ))}
       </div>
     </section>
   );

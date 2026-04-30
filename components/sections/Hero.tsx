@@ -1,21 +1,5 @@
-"use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  }),
-};
 
 const clinics = [
   { initials: "PD", name: "Pearl Dental Care", color: "bg-purple-500" },
@@ -36,38 +20,21 @@ export default function Hero() {
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20 text-center">
         {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="font-[family-name:var(--font-fraunces)] leading-none text-[#0F172A] mb-5 text-[38px] sm:text-[52px] lg:text-[64px]"
-        >
+        <h1 className="font-[family-name:var(--font-fraunces)] leading-none text-[#0F172A] mb-5 text-[38px] sm:text-[52px] lg:text-[64px]">
           <span className="font-bold not-italic block">Clinical Intelligence,</span>
           <span className="font-normal italic block text-[#0316FF]">
             Reimagined
           </span>
-        </motion.h1>
+        </h1>
 
         {/* Description */}
-        <motion.p
-          className="text-base sm:text-lg text-[#64748B] leading-relaxed mb-8 max-w-2xl mx-auto px-2"
-          custom={0.3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
+        <p className="text-base sm:text-lg text-[#64748B] leading-relaxed mb-8 max-w-2xl mx-auto px-2">
           Medecro.ai is the AI intelligence layer that runs beneath every clinical workflow
           — from diagnosis to the last follow-up, built natively for each speciality.
-        </motion.p>
+        </p>
 
         {/* CTA */}
-        <motion.div
-          custom={0.45}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="flex justify-center mb-12"
-        >
+        <div className="flex justify-center mb-12">
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-gradient-to-r from-[#2563EB] to-[#10B981] text-white font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/20 text-sm"
@@ -75,24 +42,13 @@ export default function Hero() {
             Book Demo
             <Image src="/demo-arrow.svg" alt="" width={14} height={14} className="w-4 h-4" />
           </Link>
-        </motion.div>
+        </div>
 
         {/* Product mockup placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full rounded-2xl bg-[#D1D5DB] aspect-video shadow-xl"
-        />
+        <div className="w-full rounded-2xl bg-[#D1D5DB] aspect-video shadow-xl" />
 
         {/* Trusted by clinics */}
-        <motion.div
-          custom={0.9}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-10 pb-16"
-        >
+        <div className="mt-10 pb-16">
           <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-widest mb-5">
             Trusted by clinics across India
           </p>
@@ -109,7 +65,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
