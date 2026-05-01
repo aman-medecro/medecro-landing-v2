@@ -23,7 +23,7 @@ function StripItem({ pre, bold, post, dotColor }: { pre: string; bold: string; p
       </div>
     </div>
   );
-}
+}   
 
 export default function LogoBar() {
   const repeated = [...items, ...items, ...items, ...items];
