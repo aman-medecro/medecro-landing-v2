@@ -10,23 +10,30 @@ export default function AIXRayHero() {
         <div className="absolute top-1/3 -right-20 sm:-right-40 w-[280px] sm:w-[400px] lg:w-[500px] h-[280px] sm:h-[400px] lg:h-[500px] rounded-full bg-green-100/20 blur-3xl" />
       </div>
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10 sm:py-14 lg:py-24">
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 items-center">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-10 sm:pt-10 sm:pb-14 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
-          {/* ── Left: text ── */}
-          <div className="flex flex-col items-start">
+          {/* ── Text ── */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+
             {/* Headline */}
-            <h1 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] mb-4 sm:mb-5 text-[32px] sm:text-[42px] lg:text-[52px] leading-[1.1]">
+            <h1 className="font-[family-name:var(--font-fraunces)] text-[#0F172A] mb-4 sm:mb-5 text-[28px] sm:text-[38px] lg:text-[52px] leading-[1.1]">
               <span className="font-bold not-italic">India&apos;s most advanced </span>
               <span className="font-normal italic text-[#0316FF]">AI Dental X-Ray </span>
               <span className="font-bold not-italic">Analyser</span>
             </h1>
 
             {/* Description */}
-            <p className="text-sm sm:text-base lg:text-lg text-[#64748B] leading-relaxed mb-6 sm:mb-8 max-w-lg">
+            <p className="text-sm sm:text-base lg:text-lg text-[#64748B] leading-relaxed mb-5 sm:mb-6 max-w-sm sm:max-w-lg lg:max-w-lg">
               Detect 22+ dental conditions in under 30 seconds. Built on the largest Indian dental
               dataset — designed for Indian clinics, Indian patients, Indian workflows.
             </p>
+
+            {/* Mobile/tablet image — between description and CTA */}
+            <div className="lg:hidden relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl bg-white border border-[#E2E8F0] shadow-xl overflow-hidden flex items-center justify-center mb-6 sm:mb-8">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#EFF6FF]/40 to-[#ECFDF5]/40" />
+              <p className="relative text-sm text-[#94A3B8] font-medium">[ Product screenshot ]</p>
+            </div>
 
             {/* CTA */}
             <Link
@@ -38,8 +45,8 @@ export default function AIXRayHero() {
             </Link>
           </div>
 
-          {/* ── Right: image placeholder ── */}
-          <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] rounded-2xl bg-white border border-[#E2E8F0] shadow-xl overflow-hidden flex items-center justify-center">
+          {/* ── Desktop-only image column ── */}
+          <div className="hidden lg:flex relative w-full aspect-[16/10] rounded-2xl bg-white border border-[#E2E8F0] shadow-xl overflow-hidden items-center justify-center">
             <div className="absolute inset-0 bg-gradient-to-br from-[#EFF6FF]/40 to-[#ECFDF5]/40" />
             <p className="relative text-sm text-[#94A3B8] font-medium">[ Product screenshot ]</p>
           </div>
