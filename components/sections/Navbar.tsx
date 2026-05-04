@@ -99,7 +99,7 @@ export default function Navbar() {
                   {platformItems.map(({ href, label, icon: Icon, description }) => (
                     <DropdownMenuItem
                       key={href}
-                      render={<Link href={href} />}
+                      render={(props) => <Link href={href} {...props} />}
                       className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] transition-colors group cursor-pointer w-full"
                     >
                       <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
