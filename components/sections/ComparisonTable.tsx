@@ -1,7 +1,5 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Check } from "lucide-react";
 import Link from "next/link";
 
@@ -33,11 +31,8 @@ const rows = [
 ];
 
 export default function ComparisonTable() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-white">
+    <section className="py-16 sm:py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
 
@@ -70,12 +65,7 @@ export default function ComparisonTable() {
           </div>
 
           {/* Right — comparison table */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="rounded-2xl border border-[#E2E8F0] overflow-hidden"
-          >
+          <div className="rounded-2xl border border-[#E2E8F0] overflow-hidden">
             {/* Header row */}
             <div className="grid grid-cols-2">
               <div className="px-5 py-3 border-b border-[#E2E8F0] bg-[#FF503C1A]">
@@ -92,11 +82,8 @@ export default function ComparisonTable() {
 
             {/* Rows */}
             {rows.map((row, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0 }}
-                animate={inView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.35, delay: 0.2 + i * 0.06 }}
                 className="grid grid-cols-2 border-b last:border-b-0 border-[#FFFFFF14]"
               >
                 <div className="px-5 py-3.5 text-sm text-[#64748B] bg-[#FF503C08]">
@@ -108,9 +95,9 @@ export default function ComparisonTable() {
                     {row.medecro}
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
         </div>
       </div>

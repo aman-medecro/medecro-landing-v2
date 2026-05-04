@@ -1,7 +1,5 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Brain, Building2, Pill, MessageCircle, BarChart3 } from "lucide-react";
 import Link from "next/link";
 
@@ -55,19 +53,11 @@ const billing = {
 };
 
 export default function IntelligenceLayers() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-[#F5F7FA]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[#F5F7FA]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10 sm:mb-12"
-        >
+        <div className="text-center mb-10 sm:mb-12">
           <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Platform Architecture
           </span>
@@ -81,18 +71,15 @@ export default function IntelligenceLayers() {
             Each layer is a complete intelligence system — not a feature. Together,
             they run every clinical touchpoint from first contact to last follow-up.
           </p>
-        </motion.div>
+        </div>
 
         {/* 2x2 grid */}
         <div className="grid sm:grid-cols-2 gap-4 mb-4">
-          {layers.map((layer, i) => {
+          {layers.map((layer) => {
             const Icon = layer.icon;
             return (
-              <motion.div
+              <div
                 key={layer.title}
-                initial={{ opacity: 0, y: 24 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="bg-white rounded-2xl p-6 border border-[#E2E8F0] flex flex-col gap-3"
               >
                 <Icon size={28} className={layer.iconColor} strokeWidth={1.5} />
@@ -106,18 +93,13 @@ export default function IntelligenceLayers() {
                 >
                   → {layer.link}
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>
 
         {/* Full-width 5th card */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-white rounded-2xl p-6 border border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6"
-        >
+        <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
             <billing.icon size={28} className={`${billing.iconColor} shrink-0`} strokeWidth={1.5} />
             <div>
@@ -133,7 +115,7 @@ export default function IntelligenceLayers() {
           >
             {billing.link} →
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

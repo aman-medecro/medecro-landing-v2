@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { useState } from "react";
 import {
   CalendarDays,
   CreditCard,
@@ -82,22 +81,15 @@ const features = [
 
 export default function UnifiedPlatform() {
   const [activeId, setActiveId] = useState("opd-management");
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   const active = features.find((f) => f.id === activeId)!;
   const Icon = active.icon;
 
   return (
-    <section ref={ref} className="py-16 sm:py-20 lg:py-28 bg-white">
+    <section className="py-16 sm:py-20 lg:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
+        <div className="text-center mb-10">
           <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[#0316FF] uppercase mb-4 block text-[11px] leading-[17.6px] tracking-[1.65px]">
             Full Platform
           </span>
@@ -107,15 +99,10 @@ export default function UnifiedPlatform() {
           <p className="text-[#64748B] text-base max-w-md mx-auto">
             Eight powerful features that cover every operational need of your clinic.
           </p>
-        </motion.div>
+        </div>
 
         {/* Tab list — horizontally scrollable on mobile/tablet */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0"
-        >
+        <div className="mb-8 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
           <div className="flex overflow-x-auto lg:flex-wrap lg:justify-center gap-1 pb-1 scrollbar-none">
             {features.map((f) => (
               <button
@@ -131,14 +118,11 @@ export default function UnifiedPlatform() {
               </button>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Content card */}
-        <motion.div
+        <div
           key={activeId}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="bg-[#F5F7FA] rounded-2xl px-6 sm:px-8 py-12 sm:py-16 flex flex-col items-center text-center"
         >
           <div className="w-14 h-14 rounded-2xl border-2 border-[#2563EB] flex items-center justify-center mb-6">
@@ -148,7 +132,7 @@ export default function UnifiedPlatform() {
           <p className="text-[#64748B] text-sm leading-relaxed max-w-sm">
             {active.description}
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
