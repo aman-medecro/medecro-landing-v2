@@ -1,11 +1,6 @@
 import { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/metadata";
-
-const blogSlugs = [
-  "ai-diagnostics-india",
-  "paper-records-cost-india",
-  "dpdp-act-doctors-guide",
-];
+import { getAllSlugs } from "@/lib/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -14,6 +9,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteConfig.url}/platform/clinic-os`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteConfig.url}/platform/ai-communication`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${siteConfig.url}/platform/ai-x-ray-analyser`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: `${siteConfig.url}/blog`,
@@ -25,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteConfig.url}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.6,
+      priority: 0.7,
     },
     {
       url: `${siteConfig.url}/privacy`,
@@ -41,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const blogRoutes: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+  const blogRoutes: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
     url: `${siteConfig.url}/blog/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,

@@ -1,0 +1,48 @@
+# Medecro
+
+> Medecro is an AI-powered clinic management platform built exclusively for Indian doctors. It provides specialty-native EMR, OPD scheduling, AI diagnostics, automated patient communication, and medical billing tools across 12+ medical specialties.
+
+## Key Pages
+
+- [Home](https://medecro.ai/): Overview of Medecro's AI clinical intelligence platform for Indian doctors
+- [Clinic OS](https://medecro.ai/platform/clinic-os): 360° AI-powered clinic management — appointments, EMR, prescriptions, billing, and follow-ups in one platform
+- [AI Communication](https://medecro.ai/platform/ai-communication): Automated patient outreach via WhatsApp, SMS, and email — appointment reminders, follow-ups, post-treatment care
+- [AI X-Ray Analyser](https://medecro.ai/platform/ai-x-ray-analyser): AI dental X-ray analysis detecting 22+ conditions in under 30 seconds, built on the largest Indian dental dataset
+- [Blog](https://medecro.ai/blog): Articles on AI healthcare, clinic management, DPDP Act compliance, and medical billing for Indian doctors
+
+## About Medecro
+
+Medecro is a clinical intelligence platform built for Indian healthcare workflows. It serves doctors across 12+ medical specialties:
+
+Dental, General Practice, Cardiology, Dermatology, Orthopaedics, Gynaecology, Ophthalmology, Paediatrics, Psychiatry, ENT, Radiology, Pathology
+
+**Key facts:**
+- 2,000+ clinics live across 9 major Indian cities
+- 90% faster AI diagnostics vs manual methods
+- 92% improvement in patient appointment adherence
+- AI billing has increased revenue for 500+ clinics by an average of 23%
+- SNOMED CT-mapped clinical records
+- DPDP Act 2023 compliant
+- Supports Hindi and English clinical workflows
+
+**Target users:** Indian doctors across all specialties who want to replace paper-based or generic EMR workflows with AI-native, specialty-specific clinical intelligence.
+
+## Blog Articles
+
+- [How AI Diagnostics is Reducing Misdiagnosis Rates in Indian Clinics](https://medecro.ai/blog/ai-diagnostics-india)
+- [The Hidden Cost of Paper-Based Records: What Indian Clinics Lose Every Month](https://medecro.ai/blog/paper-records-cost-india)
+- [DPDP Act 2023: What Every Indian Doctor Needs to Know About Patient Data](https://medecro.ai/blog/dpdp-act-doctors-guide)
+- [Building Speciality-Native Workflows: Lessons from 2,000 Indian Clinics](https://medecro.ai/blog/specialty-workflows-india)
+- [The Future of Telemedicine in India: Regulatory & Technical Outlook for 2026](https://medecro.ai/blog/telemedicine-india-2026)
+- [AI Billing: How Medecro's Billing AI Increased Revenue for 500 Clinics](https://medecro.ai/blog/billing-ai-case-study)
+
+## Contact
+
+- Support: support@medecro.ai
+- Website: https://medecro.ai
+- LinkedIn: https://linkedin.com/company/medecro
+- Twitter: https://twitter.com/medecroai
+
+## Full Content
+
+For detailed content including full blog articles, FAQs, and feature descriptions, see: [llms-full.txt](https://medecro.ai/llms-full.txt)

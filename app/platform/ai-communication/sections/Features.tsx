@@ -136,7 +136,9 @@ export default function AICommunicationFeatures() {
                   <ul className="flex flex-col gap-2.5 sm:gap-3">
                     {bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3 text-sm text-[#334155]">
-                        <CheckCircle2 size={17} className="text-[#10B981] bg-[#E6FBF7] shrink-0 mt-0.5" />
+                        <span className="w-5 h-5 rounded-full bg-[#E6FBF7] flex items-center justify-center shrink-0 mt-0.5">
+                          <Image src="/check.svg" alt="check" width={10} height={10} />
+                        </span>
                         {b}
                       </li>
                     ))}
