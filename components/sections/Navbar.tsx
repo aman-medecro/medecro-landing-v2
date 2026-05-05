@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronDown, X, MessageSquare, Calendar, Brain, BarChart3 } from "lucide-react";
+import { ChevronDown, X, MessageSquare, Calendar, Brain, BarChart3, Smile, Stethoscope, Heart, Eye, Baby, Layers } from "lucide-react";
 import Image from "next/image";
 import {
   DropdownMenu,
@@ -13,7 +13,6 @@ import {
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/specialities", label: "Specialities" },
   { href: "/resources", label: "Resources" },
   { href: "/company", label: "Company" },
 ];
@@ -25,11 +24,18 @@ const platformItems = [
   { href: "/platform/analytics", label: "Analytics & Reporting", icon: BarChart3, description: "Track outcomes and performance metrics" },
 ];
 
+const specialitiesItems = [
+  { href: "/specialities/dentistry", label: "Dentistry", icon: Smile, description: "AI dental X-ray, tooth charting & billing" },
+  { href: "/specialities/general-practice", label: "General Practice", icon: Stethoscope, description: "Smart OPD management for GPs" },
+  { href: "/specialities/cardiology", label: "Cardiology", icon: Heart, description: "ECG management & cardiac workflows" },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Platform");
   const [drawerPlatformOpen, setDrawerPlatformOpen] = useState(false);
+  const [drawerSpecialitiesOpen, setDrawerSpecialitiesOpen] = useState(false);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 10);
@@ -56,6 +62,26 @@ export default function Navbar() {
     </button>
   );
 
+  const DropdownItems = ({ items }: { items: typeof platformItems }) => (
+    <>
+      {items.map(({ href, label, icon: Icon, description }) => (
+        <DropdownMenuItem
+          key={href}
+          render={(props) => <Link href={href} {...props} />}
+          className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] transition-colors group cursor-pointer w-full"
+        >
+          <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
+            <Icon size={15} className="text-[#2563EB]" />
+          </span>
+          <span>
+            <span className="block text-sm font-medium text-[#0F172A] group-hover:text-[#2563EB] transition-colors">{label}</span>
+            <span className="block text-xs text-[#64748B] mt-0.5">{description}</span>
+          </span>
+        </DropdownMenuItem>
+      ))}
+    </>
+  );
+
   return (
     <>
       {/* ── Navbar ── */}
@@ -72,7 +98,7 @@ export default function Navbar() {
             <span className="font-semibold text-[17px] text-[#0F172A]">medecro.ai</span>
           </Link>
 
-          {/* Desktop (lg+): nav links */}
+          {/* Desktop nav */}
           <ul className="hidden lg:flex items-center gap-8">
 
             {/* Platform dropdown */}
@@ -96,26 +122,38 @@ export default function Navbar() {
                   sideOffset={12}
                   className="w-72 p-2 rounded-2xl border border-[#E2E8F0] shadow-xl bg-white"
                 >
-                  {platformItems.map(({ href, label, icon: Icon, description }) => (
-                    <DropdownMenuItem
-                      key={href}
-                      render={(props) => <Link href={href} {...props} />}
-                      className="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-[#F8FAFC] focus:bg-[#F8FAFC] transition-colors group cursor-pointer w-full"
-                    >
-                      <span className="mt-0.5 w-8 h-8 rounded-lg bg-gradient-to-br from-[#EFF6FF] to-[#ECFDF5] flex items-center justify-center shrink-0 group-hover:from-[#DBEAFE] group-hover:to-[#D1FAE5] transition-colors">
-                        <Icon size={15} className="text-[#2563EB]" />
-                      </span>
-                      <span>
-                        <span className="block text-sm font-medium text-[#0F172A] group-hover:text-[#2563EB] transition-colors">{label}</span>
-                        <span className="block text-xs text-[#64748B] mt-0.5">{description}</span>
-                      </span>
-                    </DropdownMenuItem>
-                  ))}
+                  <DropdownItems items={platformItems} />
                 </DropdownMenuContent>
               </DropdownMenu>
             </li>
 
-            {/* Other nav links */}
+            {/* Specialities dropdown */}
+            <li>
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  className={cn(
+                    "inline-flex items-center gap-1 text-sm font-medium text-[#0F172A]",
+                    "hover:text-[#2563EB] transition-colors outline-none",
+                    "data-[state=open]:text-[#2563EB]"
+                  )}
+                >
+                  Specialities
+                  <ChevronDown
+                    size={14}
+                    className="text-[#94A3B8] transition-transform duration-200 data-[state=open]:rotate-180"
+                  />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  sideOffset={12}
+                  className="w-72 p-2 rounded-2xl border border-[#E2E8F0] shadow-xl bg-white"
+                >
+                  <DropdownItems items={specialitiesItems} />
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </li>
+
+            {/* Resources, Company */}
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -123,13 +161,12 @@ export default function Navbar() {
                   className="inline-flex items-center gap-1 text-sm font-medium text-[#0F172A] hover:text-[#2563EB] transition-colors"
                 >
                   {link.label}
-                  <ChevronDown size={14} className="text-[#94A3B8]" />
                 </Link>
               </li>
             ))}
           </ul>
 
-          {/* Desktop (lg+): CTAs */}
+          {/* Desktop CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/login"
@@ -146,7 +183,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Tablet (md to lg): Login + Book Demo + hamburger */}
+          {/* Tablet: Login + Book Demo + hamburger */}
           <div className="hidden md:flex lg:hidden items-center gap-3">
             <Link
               href="/login"
@@ -164,7 +201,7 @@ export default function Navbar() {
             <HamburgerIcon />
           </div>
 
-          {/* Mobile (< md): hamburger only */}
+          {/* Mobile: hamburger only */}
           <div className="flex md:hidden">
             <HamburgerIcon />
           </div>
@@ -200,11 +237,11 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Drawer nav links */}
+        {/* Drawer nav */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
           <ul className="flex flex-col gap-1">
 
-            {/* Platform with expandable sub-items */}
+            {/* Platform expandable */}
             <li>
               <button
                 onClick={() => setDrawerPlatformOpen((v) => !v)}
@@ -247,7 +284,50 @@ export default function Navbar() {
               </div>
             </li>
 
-            {/* Other links */}
+            {/* Specialities expandable */}
+            <li>
+              <button
+                onClick={() => setDrawerSpecialitiesOpen((v) => !v)}
+                className={`w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-[15px] font-medium transition-all ${
+                  activeLink === "Specialities"
+                    ? "bg-gradient-to-r from-[#EFF6FF] to-[#ECFDF5] text-[#2563EB]"
+                    : "text-[#0F172A] hover:bg-[#F8FAFC]"
+                }`}
+              >
+                Specialities
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${drawerSpecialitiesOpen ? "rotate-180 text-[#2563EB]" : activeLink === "Specialities" ? "text-[#2563EB]" : "text-[#94A3B8]"}`}
+                />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-200 ${
+                  drawerSpecialitiesOpen ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <ul className="mt-1 ml-3 flex flex-col gap-0.5">
+                  {specialitiesItems.map(({ href, label, icon: Icon, description }) => (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        onClick={() => { setActiveLink("Specialities"); setDrawerOpen(false); }}
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-[14px] text-[#334155] hover:bg-[#F8FAFC] hover:text-[#2563EB] transition-colors group"
+                      >
+                        <span className="w-7 h-7 rounded-lg bg-[#F1F5F9] flex items-center justify-center shrink-0 group-hover:bg-[#DBEAFE] transition-colors">
+                          <Icon size={13} className="text-[#64748B] group-hover:text-[#2563EB] transition-colors" />
+                        </span>
+                        <span>
+                          <span className="block font-medium">{label}</span>
+                          <span className="block text-xs text-[#94A3B8]">{description}</span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+
+            {/* Resources, Company */}
             {navLinks.map((link) => {
               const isActive = activeLink === link.label;
               return (
@@ -262,14 +342,12 @@ export default function Navbar() {
                     }`}
                   >
                     {link.label}
-                    <ChevronDown size={16} className={isActive ? "text-[#2563EB]" : "text-[#94A3B8]"} />
                   </Link>
                 </li>
               );
             })}
           </ul>
 
-          {/* Decorative gradient blob */}
           <div className="mt-8 mx-4 h-16 rounded-2xl bg-gradient-to-r from-[#2563EB]/10 to-[#10B981]/10 blur-xl" />
         </nav>
 

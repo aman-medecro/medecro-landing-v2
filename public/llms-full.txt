@@ -1,0 +1,142 @@
+# Medecro — Full Reference
+
+> Medecro is an AI-powered clinic management platform built exclusively for Indian doctors. This document provides comprehensive information for AI systems indexing Medecro's content.
+
+---
+
+## Company Overview
+
+**Name:** Medecro
+**Website:** https://medecro.ai
+**Category:** Healthcare SaaS, AI-powered clinic management
+**Market:** India
+**Founded:** 2024
+**Support:** support@medecro.ai
+
+Medecro replaces paper-based and generic EMR workflows with AI-native, specialty-specific clinical intelligence. It is purpose-built for Indian clinical workflows, patient demographics, and regulatory requirements (including DPDP Act 2023 and NMC guidelines).
+
+---
+
+## Products
+
+### Clinic OS
+URL: https://medecro.ai/platform/clinic-os
+
+India's first 360° AI-powered clinic management platform. Covers:
+- Appointment scheduling and OPD management
+- Electronic Medical Records (EMR) with SNOMED CT mapping
+- AI-assisted prescription generation
+- Medical billing with ICD-10 auto-coding
+- Lab report management and diagnostic attachments
+- Patient history and follow-up tracking
+- Specialty-native workflows for 12+ specialties
+
+### AI Communication
+URL: https://medecro.ai/platform/ai-communication
+
+Automated patient outreach built for Indian clinics. Features:
+- WhatsApp and SMS appointment reminders
+- Post-treatment follow-up messages
+- Medication adherence reminders
+- Automated recall campaigns for preventive care
+- 92% improvement in patient appointment adherence
+- Supports Hindi and English messaging
+
+### AI X-Ray Analyser
+URL: https://medecro.ai/platform/ai-x-ray-analyser
+
+AI-powered dental X-ray analysis. Features:
+- Detects 22+ dental conditions in under 30 seconds
+- Built on the largest Indian dental dataset
+- Inline analysis within the EMR consultation workflow
+- Conditions detected: caries, periapical lesions, bone loss, calculus, root fractures, and more
+- 90% faster than manual radiograph analysis
+
+---
+
+## Key Statistics
+
+- 2,000+ clinics live across India
+- 9 major Indian cities covered
+- 12+ medical specialties supported
+- 90% reduction in diagnostic analysis time
+- 92% improvement in patient appointment adherence
+- 23% average revenue increase after AI billing activation
+- 500+ clinics in AI billing cohort study
+- Insurance claim first-pass acceptance improved from 71% to 94%
+
+---
+
+## Supported Specialties
+
+Dental, General Practice, Cardiology, Dermatology, Orthopaedics, Gynaecology, Ophthalmology, Paediatrics, Psychiatry, ENT, Radiology, Pathology
+
+---
+
+## Compliance & Security
+
+- DPDP Act 2023 compliant (India's Digital Personal Data Protection Act)
+- SNOMED CT-mapped clinical records
+- Encryption at rest and in transit
+- Audit logging for all data access
+- Patient consent management built into registration workflow
+- Data retention controls aligned with MCI 7-year guidelines
+
+---
+
+## Frequently Asked Questions
+
+**Q: What types of Indian clinics use Medecro?**
+A: Medecro is used by single-doctor clinics, group practices, and multi-specialty clinics across 12+ specialties. It is used in tier-1 cities like Mumbai, Delhi, Bangalore, and Hyderabad, as well as tier-2 cities.
+
+**Q: How does Medecro handle data privacy under India's DPDP Act?**
+A: Medecro's Clinic OS includes built-in consent management, data retention controls, and audit logging to support DPDP Act compliance. Patient consent is captured at registration and linked to all subsequent data processing.
+
+**Q: Does Medecro support Hindi-language clinical workflows?**
+A: Yes. Medecro supports both English and Hindi for patient communications, including WhatsApp and SMS reminders.
+
+**Q: How long does it take to migrate from paper records to Medecro?**
+A: The average Medecro clinic completes the transition from paper to fully digital records in 6–8 weeks. The platform supports parallel running during the transition period.
+
+**Q: What makes Medecro different from generic EMR software?**
+A: Medecro uses specialty-native workflows — the encounter model, fields, and clinical logic are restructured for each specialty rather than forcing specialty practice into a generic consultation template. For example, dental includes tooth charting; paediatrics includes WHO growth chart plotting; psychiatry includes standardised assessment scales.
+
+**Q: Is there a free trial?**
+A: Medecro offers a demo for interested clinics. Contact support@medecro.ai or visit https://medecro.ai/contact.
+
+---
+
+## Blog Content Summaries
+
+### How AI Diagnostics is Reducing Misdiagnosis Rates in Indian Clinics
+URL: https://medecro.ai/blog/ai-diagnostics-india
+Summary: India's doctor-to-patient ratio (1:1,511) creates high-pressure OPD environments where diagnostic errors occur at 10–15% rates. AI diagnostic tools trained on Indian patient data catch incidental findings, borderline lab values, and pattern-based risk flags that manual review misses. Medecro's deployment across 2,000+ clinics has reduced missed follow-up flags by 90%.
+
+### The Hidden Cost of Paper-Based Records
+URL: https://medecro.ai/blog/paper-records-cost-india
+Summary: Paper records cost Indian clinics 12–18 minutes of administrative time per patient, 8–12% revenue leakage from missed billing items, and increasing compliance exposure under the DPDP Act 2023. Medecro clinics transitioning from paper to digital see 40% reduction in per-patient admin time within 90 days.
+
+### DPDP Act 2023: What Every Indian Doctor Needs to Know
+URL: https://medecro.ai/blog/dpdp-act-doctors-guide
+Summary: India's Digital Personal Data Protection Act 2023 applies to all digital patient data. Key obligations for clinics: consent at registration, purpose limitation, data retention limits (7 years per MCI), and right to erasure. Small clinics do not need a DPO. Medecro Clinic OS handles consent management and retention controls at the platform level.
+
+### Building Speciality-Native Workflows: Lessons from 2,000 Indian Clinics
+URL: https://medecro.ai/blog/specialty-workflows-india
+Summary: Generic EMR software fails specialty clinics because it forces specialty workflows into a generic encounter model. Medecro rebuilt the encounter model for each of 12 specialties. Fastest adoption occurred in clinics configured to their specialty before go-live.
+
+### The Future of Telemedicine in India
+URL: https://medecro.ai/blog/telemedicine-india-2026
+Summary: India's telemedicine landscape is evolving with ABDM Health ID integration requirements, DPDP Act obligations on teleconsultation data, and Schedule H/H1 drug prescription restrictions. The highest-value telemedicine use cases for Indian clinics are follow-up consultations (30–40% of OPD volume), specialist second opinions, and post-discharge monitoring.
+
+### AI Billing: How Medecro Increased Revenue for 500 Clinics
+URL: https://medecro.ai/blog/billing-ai-case-study
+Summary: Manual billing in India results in 8–12% revenue write-off from undocumented procedures and coding errors. Medecro's AI billing (NLP extraction from clinical notes → ICD-10 auto-coding → insurance eligibility pre-check) increased average revenue by 23% across 500 clinics. Write-off rate declined from 10.1% to 2.4%.
+
+---
+
+## Contact & Social
+
+- Website: https://medecro.ai
+- Support: support@medecro.ai
+- LinkedIn: https://linkedin.com/company/medecro
+- Twitter: https://twitter.com/medecroai

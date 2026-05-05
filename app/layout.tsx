@@ -5,6 +5,7 @@ import { defaultMetadata } from "@/lib/metadata";
 import {
   getMedicalBusinessSchema,
   getOrganizationSchema,
+  getWebSiteSchema,
 } from "@/lib/structured-data";
 import Navbar from "@/components/sections/Navbar";
 
@@ -44,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable} ${dmSans.variable} ${outfit.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${fraunces.variable} ${dmSans.variable} ${outfit.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -56,6 +57,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getWebSiteSchema()),
           }}
         />
       </head>
